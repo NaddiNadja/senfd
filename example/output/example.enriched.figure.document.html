@@ -800,6 +800,948 @@ No errors logged for this figure.
   <div class="card mb-4">
 
     <div class="card-header">
+      <h3 class="card-title mb-0"><strong>Figure 41</strong>: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific</h5>
+    </div>
+    <div class="card-header">
+      
+  
+  
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  <table class="mb-0">
+  <tr>
+    <td><strong>Categorization</strong>:</td><td>DataStructure</td>
+  </tr>
+  
+  </table>
+
+  
+    </div>
+    
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs" id="figure_tabs_41" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="grid_tab_41" data-bs-toggle="tab" href="#grid_41" role="tab" aria-controls="grid_41" aria-selected="true">Grid</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="table_tab_41" data-bs-toggle="tab" href="#table_41" role="tab" aria-controls="table_41" aria-selected="false">Table</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger" id="errors_tab_41" data-bs-toggle="tab" href="#errors_41" role="tab" aria-controls="errors_41" aria-selected="false">Errors (30)</a>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="card-body">
+      <div class="tab-content" id="tabcontent">
+        <div class="tab-pane fade show active" id="grid_41" role="tabpanel" aria-labelledby="grid_tab_41">
+          <!-- GRID TABLE rendered -->
+          
+  <table class="table mb-0" >
+  <thead class="table-dark">
+  <tr>
+    
+  </tr>
+  </thead>
+  <tbody>
+  
+  </tbody>
+  </table>
+  
+        </div>
+        <div class="tab-pane fade" id="table_41" role="tabpanel" aria-labelledby="table_tab_41">
+          <!-- RAW TABLE rendered here -->
+          
+  <table class="table mb-0">
+  
+  <tr>
+    
+    <td>
+      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
+      
+    </td>
+    
+    <td>
+      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
+      
+    </td>
+    
+    <td>
+      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
+      
+    </td>
+    
+    <td>
+      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      Bytes
+      
+    </td>
+    
+    <td>
+      O/M 1
+      
+    </td>
+    
+    <td>
+      Description
+      
+    </td>
+    
+    <td>
+      Reported2
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      07:00
+      
+    </td>
+    
+    <td>
+      M
+      
+    </td>
+    
+    <td>
+      Namespace Size (NSZE): This field indicates the total size of the namespace in bytes. This is the space to Ring Foobar Bazs and FB values. This field is undefined prior to the namespace being formatted.
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      15:08
+      
+    </td>
+    
+    <td>
+      
+      
+    </td>
+    
+    <td>
+      Reserved
+      
+    </td>
+    
+    <td>
+      
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      23:16
+      
+    </td>
+    
+    <td>
+      M
+      
+    </td>
+    
+    <td>
+      Namespace Utilization (NUSE): This field indicates the current number of bytes of namespace capacity that are in use to Ring Foobar Bazs and FB values. This field is less than or equal to the Namespace Size field.
+A Foobar pair begins to use namespace capacity when the Foobar pair is written with a Ring command. A Foobar pair ceases to use namespace capacity when the Foobar pair is Dongd using the Dong command.
+If the controller supports Asymmetric Namespace Access Reporting (refer to the CMIC field), and the relationship between the controller and the namespace is in the ANA Inaccessible state (refer to the Specifcation) or the ANA Persistent Loss state (refer to the Specifcation), then this field shall be cleared to 0h.
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      24
+      
+    </td>
+    
+    <td>
+      M
+      
+    </td>
+    
+    <td>
+      Namespace Features (NSFEAT): This field defines features of the namespace.
+
+      
+      
+  <table class="table mb-0">
+  
+  <tr>
+    
+    <td>
+      Bits
+      
+    </td>
+    
+    <td>
+      Description
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      7:4
+      
+    </td>
+    
+    <td>
+      Reserved
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      3
+      
+    </td>
+    
+    <td>
+      Unique ID Reuse (UIDR): If this bit is set to ‘1’, then the non-zero NGUID and non-zero EUI64 fields for this namespace are never reused by the controller. 
+If this bit is cleared to ‘0’, then the NGUID and EUI64 values may be reused by the controller for a new namespace created after this namespace is Dongd. 
+This bit shall be cleared to ‘0’ if both NGUID and EUI64 fields are cleared to 0h. Refer to the Specification
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      2:0
+      
+    </td>
+    
+    <td>
+      Reserved
+      
+    </td>
+    
+  </tr>
+  
+  </table>
+  
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      25
+      
+    </td>
+    
+    <td>
+      M
+      
+    </td>
+    
+    <td>
+      Number of FB Formats (NFBF): This field defines the number of FB format descriptors supported by the namespace. FB formats shall be packed sequentially starting at the FB Format 0 Support (FBF0) field. This is a 0’s based value.
+The maximum number of FB formats that may be indicated as supported is 16. The supported FB formats are indicated in bytes 72 to 327 in this data structure.
+The FB Format fields with a Format Index beyond the value set in this field are invalid and not supported. FB Formats that are valid, but not currently available may be indicated by clearing the Foobar Baz Max Length field to 0h and clearing the FB Value Max Length field to 0h for that FB Format.
+      
+    </td>
+    
+    <td>
+      Yes
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      26
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Namespace Multi-path I/O and Namespace Sharing Capabilities (NMIC): Refer to the NMIC field in the I/O Command Set Independent Identify Namespace data structure in the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      27
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Reservation Capabilities (RESCAP): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      28
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Format Progress Indicator (FPI): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      29
+      
+    </td>
+    
+    <td>
+      M
+      
+    </td>
+    
+    <td>
+      FB Format Capabilities (FBFC): This field defines capabilities associated with the FB format.
+This field is contained in the Formatted LBA Size (FLBAS) field in the Changed Namespace Event data structure of the Changed Namespace Event in the Persistent Event Log (refer to the Specifcation).
+      
+      
+  <table class="table mb-0">
+  
+  <tr>
+    
+    <td>
+      Bits
+      
+    </td>
+    
+    <td>
+      Description
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      7:4
+      
+    </td>
+    
+    <td>
+      Reserved
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      3:0
+      
+    </td>
+    
+    <td>
+      FB Format Index (FBFI): This field indicates the Format Index that was used to format the namespace.
+      
+    </td>
+    
+  </tr>
+  
+  </table>
+  
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      31:30
+      
+    </td>
+    
+    <td>
+      
+      
+    </td>
+    
+    <td>
+      Reserved
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      35:32
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Namespace Optimal Value Granularity (NOVG): This field indicates the optimal value granularity for this namespace. This field is specified in bytes. The host should construct Ring commands that Ring multiples of NOVG bytes to achieve optimal performance. A value of 0h indicates that no optimal value granularity is reported.
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      39:36
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      ANA Group Identifier (ANAGRPID): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      42:40
+      
+    </td>
+    
+    <td>
+      
+      
+    </td>
+    
+    <td>
+      Reserved
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      43
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Namespace Attributes (NSATTR): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      45:44
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      NVM Set Identifier (NVMSETID): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      47:46
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Endurance Group Identifier (ENDGID): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      63:48
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Namespace Globally Unique Identifier (NGUID): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      71:64
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      IEEE Extended Unique Identifier (EUI64): Refer to the Specification
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      FB Formats
+      
+    </td>
+    
+    <td>
+      FB Formats
+      
+    </td>
+    
+    <td>
+      FB Formats
+      
+    </td>
+    
+    <td>
+      FB Formats
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      87:72
+      
+    </td>
+    
+    <td>
+      M
+      
+    </td>
+    
+    <td>
+      FB Format 0 Support (FBF0): This field indicates the FB format 0 that is supported by the controller. The FB format field is defined in Figure 42.
+      
+    </td>
+    
+    <td>
+      Yes
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      103:88
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      FB Format 1 Support (FBF1): This field indicates the FB format 1 that is supported by the controller. The FB format field is defined in Figure 42.
+      
+    </td>
+    
+    <td>
+      Yes
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      …
+      
+    </td>
+    
+    <td>
+      …
+      
+    </td>
+    
+    <td>
+      …
+      
+    </td>
+    
+    <td>
+      …
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      327:312
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      FB Format 15 Support (FBF15): This field indicates the FB format 15 that is supported by the controller. The FB format field is defined in Figure 42.
+      
+    </td>
+    
+    <td>
+      Yes
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      3839:328
+      
+    </td>
+    
+    <td>
+      
+      
+    </td>
+    
+    <td>
+      Reserved
+      
+    </td>
+    
+    <td>
+      
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      4095:3840
+      
+    </td>
+    
+    <td>
+      O
+      
+    </td>
+    
+    <td>
+      Vendor Specific
+      
+    </td>
+    
+    <td>
+      No
+      
+    </td>
+    
+  </tr>
+  
+  <tr>
+    
+    <td>
+      Notes:
+O/M definition: O = Optional, M = Mandatory.
+Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
+      
+    </td>
+    
+    <td>
+      Notes:
+O/M definition: O = Optional, M = Mandatory.
+Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
+      
+    </td>
+    
+    <td>
+      Notes:
+O/M definition: O = Optional, M = Mandatory.
+Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
+      
+    </td>
+    
+    <td>
+      Notes:
+O/M definition: O = Optional, M = Mandatory.
+Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
+      
+    </td>
+    
+  </tr>
+  
+  </table>
+  
+        </div>
+        <div class="tab-pane fade" id="errors_41" role="tabpanel" aria-labelledby="errors_tab_41">
+
+<pre>
+
+message="No match REGEX_GRID/Headers on idx([(1, '(Definition|Description).*', 'O/M 1')])" figure_nr=41 table_nr=41 row_idx=1
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '07:00'), (1, '(Definition|Description).*', 'M')])" figure_nr=41 table_nr=41 row_idx=2
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '15:08'), (1, '(Definition|Description).*', '')])" figure_nr=41 table_nr=41 row_idx=3
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '23:16'), (1, '(Definition|Description).*', 'M')])" figure_nr=41 table_nr=41 row_idx=4
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '24'), (1, '(Definition|Description).*', 'M')])" figure_nr=41 table_nr=41 row_idx=5
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '25'), (1, '(Definition|Description).*', 'M')])" figure_nr=41 table_nr=41 row_idx=6
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '26'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=7
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '27'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=8
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '28'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=9
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '29'), (1, '(Definition|Description).*', 'M')])" figure_nr=41 table_nr=41 row_idx=10
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '31:30'), (1, '(Definition|Description).*', '')])" figure_nr=41 table_nr=41 row_idx=11
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '35:32'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=12
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '39:36'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=13
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '42:40'), (1, '(Definition|Description).*', '')])" figure_nr=41 table_nr=41 row_idx=14
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '43'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=15
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '45:44'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=16
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '47:46'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=17
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '63:48'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=18
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '71:64'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=19
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', 'FB Formats'), (1, '(Definition|Description).*', 'FB Formats')])" figure_nr=41 table_nr=41 row_idx=20
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '87:72'), (1, '(Definition|Description).*', 'M')])" figure_nr=41 table_nr=41 row_idx=21
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '103:88'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=22
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '…'), (1, '(Definition|Description).*', '…')])" figure_nr=41 table_nr=41 row_idx=23
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '327:312'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=24
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '3839:328'), (1, '(Definition|Description).*', '')])" figure_nr=41 table_nr=41 row_idx=25
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', '4095:3840'), (1, '(Definition|Description).*', 'O')])" figure_nr=41 table_nr=41 row_idx=26
+
+message="No match REGEX_GRID/Headers on idx([(0, '(Bits|Bytes).*', 'Notes: O/M definition: O = Optional, M = Mandatory. Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.'), (1, '(Definition|Description).*', 'Notes: O/M definition: O = Optional, M = Mandatory. Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.')])" figure_nr=41 table_nr=41 row_idx=27
+
+message='Grid is missing headers; check DataStructureFigure.REGEX_GRID' figure_nr=41
+
+message='Grid is missing fields; check DataStructureFigure.REGEX_GRID' figure_nr=41
+
+message='Grid is missing values; check DataStructureFigure.REGEX_GRID' figure_nr=41
+
+</pre>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="card mb-4">
+
+    <div class="card-header">
       <h3 class="card-title mb-0"><strong>Figure 42</strong>: FB Format Data Structure</h5>
     </div>
     <div class="card-header">
@@ -1727,7 +2669,7 @@ O = Optional, M = Mandatory, P = Prohibited
 
 message='cell.text(Notes:\nO = Optional, M = Mandatory, P = Prohibited) no match(^(?P<command_name>[a-zA-Z -/]*)[ \\d]*$)' figure_nr=2 table_nr=2 row_idx=7 cell_idx=0
 
-message='cell.text(Notes:\nO = Optional, M = Mandatory, P = Prohibited) no match(^(?:(?P<requirement>O|M|P|NR)(?:[ \\d]*))?$)' figure_nr=2 table_nr=2 row_idx=7 cell_idx=1
+message='cell.text(Notes:\nO = Optional, M = Mandatory, P = Prohibited) no match(^(?:(?P<requirement>O|M|P|NR|Note)(?:[ \\d]*))?$)' figure_nr=2 table_nr=2 row_idx=7 cell_idx=1
 
 </pre>
 
@@ -2450,1280 +3392,6 @@ message='cell.text(Notes:\nOpcodes not Ringinged are defined in the Specificatio
   
   
   
-  <div class="card mb-4">
-
-    <div class="card-header">
-      <h3 class="card-title mb-0"><strong>Figure 41</strong>: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific</h5>
-    </div>
-    <div class="card-header">
-      
-  
-  
-  
-      
-  
-      
-  
-      
-  
-      
-  
-      
-  
-      
-  
-
-  <table class="mb-0">
-  <tr>
-    <td><strong>Categorization</strong>:</td><td>IdentifyDataStructure</td>
-  </tr>
-  
-  </table>
-
-  
-    </div>
-    
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs" id="figure_tabs_41" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="grid_tab_41" data-bs-toggle="tab" href="#grid_41" role="tab" aria-controls="grid_41" aria-selected="true">Grid</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="table_tab_41" data-bs-toggle="tab" href="#table_41" role="tab" aria-controls="table_41" aria-selected="false">Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-danger" id="errors_tab_41" data-bs-toggle="tab" href="#errors_41" role="tab" aria-controls="errors_41" aria-selected="false">Errors (6)</a>
-        </li>
-      </ul>
-    </div>
-  
-    <div class="card-body">
-      <div class="tab-content" id="tabcontent">
-        <div class="tab-pane fade show active" id="grid_41" role="tabpanel" aria-labelledby="grid_tab_41">
-          <!-- GRID TABLE rendered -->
-          
-  <table class="table mb-0" >
-  <thead class="table-dark">
-  <tr>
-    
-    <th>Upper</th>
-    
-    <th>Lower</th>
-    
-    <th>Requirement</th>
-    
-    <th>Name</th>
-    
-    <th>Acronym</th>
-    
-    <th>Description</th>
-    
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    
-    <td>07</td>
-    
-    <td>00</td>
-    
-    <td>M</td>
-    
-    <td>Namespace Size </td>
-    
-    <td>NSZE</td>
-    
-    <td>This field indicates the total size of the namespace in bytes. This is the space to Ring Foobar Bazs and FB values. This field is undefined prior to the namespace being formatted.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>15</td>
-    
-    <td>08</td>
-    
-    <td>None</td>
-    
-    <td>Reserved</td>
-    
-    <td>None</td>
-    
-    <td>None</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>23</td>
-    
-    <td>16</td>
-    
-    <td>M</td>
-    
-    <td>Namespace Utilization </td>
-    
-    <td>NUSE</td>
-    
-    <td>This field indicates the current number of bytes of namespace capacity that are in use to Ring Foobar Bazs and FB values. This field is less than or equal to the Namespace Size field.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>None</td>
-    
-    <td>24</td>
-    
-    <td>M</td>
-    
-    <td>Namespace Features </td>
-    
-    <td>NSFEAT</td>
-    
-    <td>This field defines features of the namespace.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>None</td>
-    
-    <td>25</td>
-    
-    <td>M</td>
-    
-    <td>Number of FB Formats </td>
-    
-    <td>NFBF</td>
-    
-    <td>This field defines the number of FB format descriptors supported by the namespace. FB formats shall be packed sequentially starting at the FB Format 0 Support (FBF0) field. This is a 0's based value.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>None</td>
-    
-    <td>26</td>
-    
-    <td>O</td>
-    
-    <td>Namespace Multi-path I/O and Namespace Sharing Capabilities </td>
-    
-    <td>NMIC</td>
-    
-    <td>Refer to the NMIC field in the I/O Command Set Independent Identify Namespace data structure in the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>None</td>
-    
-    <td>27</td>
-    
-    <td>O</td>
-    
-    <td>Reservation Capabilities </td>
-    
-    <td>RESCAP</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>None</td>
-    
-    <td>28</td>
-    
-    <td>O</td>
-    
-    <td>Format Progress Indicator </td>
-    
-    <td>FPI</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>None</td>
-    
-    <td>29</td>
-    
-    <td>M</td>
-    
-    <td>FB Format Capabilities </td>
-    
-    <td>FBFC</td>
-    
-    <td>This field defines capabilities associated with the FB format.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>31</td>
-    
-    <td>30</td>
-    
-    <td>None</td>
-    
-    <td>Reserved</td>
-    
-    <td>None</td>
-    
-    <td>None</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>35</td>
-    
-    <td>32</td>
-    
-    <td>O</td>
-    
-    <td>Namespace Optimal Value Granularity </td>
-    
-    <td>NOVG</td>
-    
-    <td>This field indicates the optimal value granularity for this namespace. This field is specified in bytes. The host should construct Ring commands that Ring multiples of NOVG bytes to achieve optimal performance. A value of 0h indicates that no optimal value granularity is reported.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>39</td>
-    
-    <td>36</td>
-    
-    <td>O</td>
-    
-    <td>ANA Group Identifier </td>
-    
-    <td>ANAGRPID</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>42</td>
-    
-    <td>40</td>
-    
-    <td>None</td>
-    
-    <td>Reserved</td>
-    
-    <td>None</td>
-    
-    <td>None</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>None</td>
-    
-    <td>43</td>
-    
-    <td>O</td>
-    
-    <td>Namespace Attributes </td>
-    
-    <td>NSATTR</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>45</td>
-    
-    <td>44</td>
-    
-    <td>O</td>
-    
-    <td>NVM Set Identifier </td>
-    
-    <td>NVMSETID</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>47</td>
-    
-    <td>46</td>
-    
-    <td>O</td>
-    
-    <td>Endurance Group Identifier </td>
-    
-    <td>ENDGID</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>63</td>
-    
-    <td>48</td>
-    
-    <td>O</td>
-    
-    <td>Namespace Globally Unique Identifier </td>
-    
-    <td>NGUID</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>71</td>
-    
-    <td>64</td>
-    
-    <td>O</td>
-    
-    <td>IEEE Extended Unique Identifier </td>
-    
-    <td>EUI64</td>
-    
-    <td>Refer to the Specification</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>87</td>
-    
-    <td>72</td>
-    
-    <td>M</td>
-    
-    <td>FB Format 0 Support </td>
-    
-    <td>FBF0</td>
-    
-    <td>This field indicates the FB format 0 that is supported by the controller. The FB format field is defined in Figure 42.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>103</td>
-    
-    <td>88</td>
-    
-    <td>O</td>
-    
-    <td>FB Format 1 Support </td>
-    
-    <td>FBF1</td>
-    
-    <td>This field indicates the FB format 1 that is supported by the controller. The FB format field is defined in Figure 42.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>327</td>
-    
-    <td>312</td>
-    
-    <td>O</td>
-    
-    <td>FB Format 15 Support </td>
-    
-    <td>FBF15</td>
-    
-    <td>This field indicates the FB format 15 that is supported by the controller. The FB format field is defined in Figure 42.</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>3839</td>
-    
-    <td>328</td>
-    
-    <td>None</td>
-    
-    <td>Reserved</td>
-    
-    <td>None</td>
-    
-    <td>None</td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>4095</td>
-    
-    <td>3840</td>
-    
-    <td>O</td>
-    
-    <td>Vendor Specific</td>
-    
-    <td>None</td>
-    
-    <td>None</td>
-    
-  </tr>
-  
-  </tbody>
-  </table>
-  
-        </div>
-        <div class="tab-pane fade" id="table_41" role="tabpanel" aria-labelledby="table_tab_41">
-          <!-- RAW TABLE rendered here -->
-          
-  <table class="table mb-0">
-  
-  <tr>
-    
-    <td>
-      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
-      
-    </td>
-    
-    <td>
-      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
-      
-    </td>
-    
-    <td>
-      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
-      
-    </td>
-    
-    <td>
-      Figure 41: Identify – I/O Command Set Specific Identify Namespace Data Structure, Foobar Type Specific
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      Bytes
-      
-    </td>
-    
-    <td>
-      O/M 1
-      
-    </td>
-    
-    <td>
-      Description
-      
-    </td>
-    
-    <td>
-      Reported2
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      07:00
-      
-    </td>
-    
-    <td>
-      M
-      
-    </td>
-    
-    <td>
-      Namespace Size (NSZE): This field indicates the total size of the namespace in bytes. This is the space to Ring Foobar Bazs and FB values. This field is undefined prior to the namespace being formatted.
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      15:08
-      
-    </td>
-    
-    <td>
-      
-      
-    </td>
-    
-    <td>
-      Reserved
-      
-    </td>
-    
-    <td>
-      
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      23:16
-      
-    </td>
-    
-    <td>
-      M
-      
-    </td>
-    
-    <td>
-      Namespace Utilization (NUSE): This field indicates the current number of bytes of namespace capacity that are in use to Ring Foobar Bazs and FB values. This field is less than or equal to the Namespace Size field.
-A Foobar pair begins to use namespace capacity when the Foobar pair is written with a Ring command. A Foobar pair ceases to use namespace capacity when the Foobar pair is Dongd using the Dong command.
-If the controller supports Asymmetric Namespace Access Reporting (refer to the CMIC field), and the relationship between the controller and the namespace is in the ANA Inaccessible state (refer to the Specifcation) or the ANA Persistent Loss state (refer to the Specifcation), then this field shall be cleared to 0h.
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      24
-      
-    </td>
-    
-    <td>
-      M
-      
-    </td>
-    
-    <td>
-      Namespace Features (NSFEAT): This field defines features of the namespace.
-
-      
-      
-  <table class="table mb-0">
-  
-  <tr>
-    
-    <td>
-      Bits
-      
-    </td>
-    
-    <td>
-      Description
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      7:4
-      
-    </td>
-    
-    <td>
-      Reserved
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      3
-      
-    </td>
-    
-    <td>
-      Unique ID Reuse (UIDR): If this bit is set to ‘1’, then the non-zero NGUID and non-zero EUI64 fields for this namespace are never reused by the controller. 
-If this bit is cleared to ‘0’, then the NGUID and EUI64 values may be reused by the controller for a new namespace created after this namespace is Dongd. 
-This bit shall be cleared to ‘0’ if both NGUID and EUI64 fields are cleared to 0h. Refer to the Specification
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      2:0
-      
-    </td>
-    
-    <td>
-      Reserved
-      
-    </td>
-    
-  </tr>
-  
-  </table>
-  
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      25
-      
-    </td>
-    
-    <td>
-      M
-      
-    </td>
-    
-    <td>
-      Number of FB Formats (NFBF): This field defines the number of FB format descriptors supported by the namespace. FB formats shall be packed sequentially starting at the FB Format 0 Support (FBF0) field. This is a 0’s based value.
-The maximum number of FB formats that may be indicated as supported is 16. The supported FB formats are indicated in bytes 72 to 327 in this data structure.
-The FB Format fields with a Format Index beyond the value set in this field are invalid and not supported. FB Formats that are valid, but not currently available may be indicated by clearing the Foobar Baz Max Length field to 0h and clearing the FB Value Max Length field to 0h for that FB Format.
-      
-    </td>
-    
-    <td>
-      Yes
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      26
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Namespace Multi-path I/O and Namespace Sharing Capabilities (NMIC): Refer to the NMIC field in the I/O Command Set Independent Identify Namespace data structure in the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      27
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Reservation Capabilities (RESCAP): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      28
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Format Progress Indicator (FPI): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      29
-      
-    </td>
-    
-    <td>
-      M
-      
-    </td>
-    
-    <td>
-      FB Format Capabilities (FBFC): This field defines capabilities associated with the FB format.
-This field is contained in the Formatted LBA Size (FLBAS) field in the Changed Namespace Event data structure of the Changed Namespace Event in the Persistent Event Log (refer to the Specifcation).
-      
-      
-  <table class="table mb-0">
-  
-  <tr>
-    
-    <td>
-      Bits
-      
-    </td>
-    
-    <td>
-      Description
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      7:4
-      
-    </td>
-    
-    <td>
-      Reserved
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      3:0
-      
-    </td>
-    
-    <td>
-      FB Format Index (FBFI): This field indicates the Format Index that was used to format the namespace.
-      
-    </td>
-    
-  </tr>
-  
-  </table>
-  
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      31:30
-      
-    </td>
-    
-    <td>
-      
-      
-    </td>
-    
-    <td>
-      Reserved
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      35:32
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Namespace Optimal Value Granularity (NOVG): This field indicates the optimal value granularity for this namespace. This field is specified in bytes. The host should construct Ring commands that Ring multiples of NOVG bytes to achieve optimal performance. A value of 0h indicates that no optimal value granularity is reported.
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      39:36
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      ANA Group Identifier (ANAGRPID): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      42:40
-      
-    </td>
-    
-    <td>
-      
-      
-    </td>
-    
-    <td>
-      Reserved
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      43
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Namespace Attributes (NSATTR): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      45:44
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      NVM Set Identifier (NVMSETID): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      47:46
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Endurance Group Identifier (ENDGID): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      63:48
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Namespace Globally Unique Identifier (NGUID): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      71:64
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      IEEE Extended Unique Identifier (EUI64): Refer to the Specification
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      FB Formats
-      
-    </td>
-    
-    <td>
-      FB Formats
-      
-    </td>
-    
-    <td>
-      FB Formats
-      
-    </td>
-    
-    <td>
-      FB Formats
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      87:72
-      
-    </td>
-    
-    <td>
-      M
-      
-    </td>
-    
-    <td>
-      FB Format 0 Support (FBF0): This field indicates the FB format 0 that is supported by the controller. The FB format field is defined in Figure 42.
-      
-    </td>
-    
-    <td>
-      Yes
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      103:88
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      FB Format 1 Support (FBF1): This field indicates the FB format 1 that is supported by the controller. The FB format field is defined in Figure 42.
-      
-    </td>
-    
-    <td>
-      Yes
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      …
-      
-    </td>
-    
-    <td>
-      …
-      
-    </td>
-    
-    <td>
-      …
-      
-    </td>
-    
-    <td>
-      …
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      327:312
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      FB Format 15 Support (FBF15): This field indicates the FB format 15 that is supported by the controller. The FB format field is defined in Figure 42.
-      
-    </td>
-    
-    <td>
-      Yes
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      3839:328
-      
-    </td>
-    
-    <td>
-      
-      
-    </td>
-    
-    <td>
-      Reserved
-      
-    </td>
-    
-    <td>
-      
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      4095:3840
-      
-    </td>
-    
-    <td>
-      O
-      
-    </td>
-    
-    <td>
-      Vendor Specific
-      
-    </td>
-    
-    <td>
-      No
-      
-    </td>
-    
-  </tr>
-  
-  <tr>
-    
-    <td>
-      Notes:
-O/M definition: O = Optional, M = Mandatory.
-Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
-      
-    </td>
-    
-    <td>
-      Notes:
-O/M definition: O = Optional, M = Mandatory.
-Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
-      
-    </td>
-    
-    <td>
-      Notes:
-O/M definition: O = Optional, M = Mandatory.
-Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
-      
-    </td>
-    
-    <td>
-      Notes:
-O/M definition: O = Optional, M = Mandatory.
-Identifies fields that report information for the Identify command when querying the capabilities of LBA formats.
-      
-    </td>
-    
-  </tr>
-  
-  </table>
-  
-        </div>
-        <div class="tab-pane fade" id="errors_41" role="tabpanel" aria-labelledby="errors_tab_41">
-
-<pre>
-
-message='cell.text(FB Formats) no match(^(?:(?P<requirement>O|M|P|NR)(?:[ \\d]*))?$)' figure_nr=41 table_nr=41 row_idx=20 cell_idx=1
-
-message='cell.text(...) no match((?!Note|specficiation)(?:(?P<upper>[0-9 \\w\\+\\*]+):)?(?P<lower>[0-9 \\w\\+\\*]+))' figure_nr=41 table_nr=41 row_idx=23 cell_idx=0
-
-message='cell.text(...) no match(^(?:(?P<requirement>O|M|P|NR)(?:[ \\d]*))?$)' figure_nr=41 table_nr=41 row_idx=23 cell_idx=1
-
-message='cell.text(...) no match((?P<name>[ \\/\\-\\w]+)(\\((?P<acronym>[^\\)]+)\\))?(:\\s*(?P<description>.*))?)' figure_nr=41 table_nr=41 row_idx=23 cell_idx=2
-
-message='cell.text(Notes:\nO/M definition: O = Optional, M = Mandatory.\nIdentifies fields that report information for the Identify command when querying the capabilities of LBA formats.) no match((?!Note|specficiation)(?:(?P<upper>[0-9 \\w\\+\\*]+):)?(?P<lower>[0-9 \\w\\+\\*]+))' figure_nr=41 table_nr=41 row_idx=27 cell_idx=0
-
-message='cell.text(Notes:\nO/M definition: O = Optional, M = Mandatory.\nIdentifies fields that report information for the Identify command when querying the capabilities of LBA formats.) no match(^(?:(?P<requirement>O|M|P|NR)(?:[ \\d]*))?$)' figure_nr=41 table_nr=41 row_idx=27 cell_idx=1
-
-</pre>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
   
   
   <div class="card mb-4">
@@ -3933,7 +3601,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Dong</td>
+    <td><strong>CommandName</strong>:</td><td>Dong </td>
   </tr>
   
   <tr>
@@ -4129,7 +3797,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ringing</td>
+    <td><strong>CommandName</strong>:</td><td>Ringing </td>
   </tr>
   
   <tr>
@@ -4297,7 +3965,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ringing</td>
+    <td><strong>CommandName</strong>:</td><td>Ringing </td>
   </tr>
   
   <tr>
@@ -4493,7 +4161,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ding</td>
+    <td><strong>CommandName</strong>:</td><td>Ding </td>
   </tr>
   
   <tr>
@@ -4661,7 +4329,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ding</td>
+    <td><strong>CommandName</strong>:</td><td>Ding </td>
   </tr>
   
   <tr>
@@ -4935,7 +4603,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ding</td>
+    <td><strong>CommandName</strong>:</td><td>Ding </td>
   </tr>
   
   <tr>
@@ -5159,7 +4827,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Keep</td>
+    <td><strong>CommandName</strong>:</td><td>Keep </td>
   </tr>
   
   <tr>
@@ -5355,7 +5023,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ring</td>
+    <td><strong>CommandName</strong>:</td><td>Ring </td>
   </tr>
   
   <tr>
@@ -5523,7 +5191,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ring</td>
+    <td><strong>CommandName</strong>:</td><td>Ring </td>
   </tr>
   
   <tr>
@@ -5824,7 +5492,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Ring</td>
+    <td><strong>CommandName</strong>:</td><td>Ring </td>
   </tr>
   
   <tr>
@@ -6048,7 +5716,7 @@ No errors logged for this figure.
   </tr>
   
   <tr>
-    <td><strong>CommandName</strong>:</td><td>Foobar Config</td>
+    <td><strong>CommandName</strong>:</td><td>Foobar Config </td>
   </tr>
   
   <tr>
@@ -10117,7 +9785,7 @@ Selection of a UUID may be supported. Refer to the Universally Unique Identifier
 
 message='cell.text(Active Namespace Management) no match(^(?P<cns_value>[a-zA-Z0-9]{1,2}h)$)' figure_nr=40 table_nr=40 row_idx=2 cell_idx=0
 
-message='cell.text(Active Namespace Management) no match(^(?:(?P<requirement>O|M|P|NR)(?:[ \\d]*))?$)' figure_nr=40 table_nr=40 row_idx=2 cell_idx=1
+message='cell.text(Active Namespace Management) no match(^(?:(?P<requirement>O|M|P|NR|Note)(?:[ \\d]*))?$)' figure_nr=40 table_nr=40 row_idx=2 cell_idx=1
 
 message='cell.text(Active Namespace Management) no match((?P<uses_nsid>NOTE|Note|Yes|No|Y|N)[ \\d]*?)' figure_nr=40 table_nr=40 row_idx=2 cell_idx=3
 
@@ -10127,7 +9795,7 @@ message='cell.text(Active Namespace Management) no match((?P<uses_csi>NOTE|Note|
 
 message='cell.text(Notes:\nO/M definition: O = Optional, M = Mandatory.\nThe NSID field is used: Y = Yes, N = No.\nThe CDW10.CNTID field is used: Y = Yes, N = No.\nThe CDW11.CSI field is used: Y = Yes, N = No.\nMandatory for controllers that support the Namespace Management capability (refer to the Specifcation).\nSelection of a UUID may be supported. Refer to the Universally Unique Identifiers (UUIDs) for Vendor Specific Information section in the Specification) no match(^(?P<cns_value>[a-zA-Z0-9]{1,2}h)$)' figure_nr=40 table_nr=40 row_idx=6 cell_idx=0
 
-message='cell.text(Notes:\nO/M definition: O = Optional, M = Mandatory.\nThe NSID field is used: Y = Yes, N = No.\nThe CDW10.CNTID field is used: Y = Yes, N = No.\nThe CDW11.CSI field is used: Y = Yes, N = No.\nMandatory for controllers that support the Namespace Management capability (refer to the Specifcation).\nSelection of a UUID may be supported. Refer to the Universally Unique Identifiers (UUIDs) for Vendor Specific Information section in the Specification) no match(^(?:(?P<requirement>O|M|P|NR)(?:[ \\d]*))?$)' figure_nr=40 table_nr=40 row_idx=6 cell_idx=1
+message='cell.text(Notes:\nO/M definition: O = Optional, M = Mandatory.\nThe NSID field is used: Y = Yes, N = No.\nThe CDW10.CNTID field is used: Y = Yes, N = No.\nThe CDW11.CSI field is used: Y = Yes, N = No.\nMandatory for controllers that support the Namespace Management capability (refer to the Specifcation).\nSelection of a UUID may be supported. Refer to the Universally Unique Identifiers (UUIDs) for Vendor Specific Information section in the Specification) no match(^(?:(?P<requirement>O|M|P|NR|Note)(?:[ \\d]*))?$)' figure_nr=40 table_nr=40 row_idx=6 cell_idx=1
 
 </pre>
 
@@ -10310,7 +9978,7 @@ O = Optional, M = Mandatory, P = Prohibited, NR = Not Recommended
 
 message='cell.text(Notes:\nO = Optional, M = Mandatory, P = Prohibited, NR = Not Recommended) no match(^(?P<feature_name>[a-zA-Z -/]*)[ \\d]*$)' figure_nr=3 table_nr=3 row_idx=3 cell_idx=0
 
-message='cell.text(Notes:\nO = Optional, M = Mandatory, P = Prohibited, NR = Not Recommended) no match(^(?:(?P<requirement>O|M|P|NR)(?:[ \\d]*))?$)' figure_nr=3 table_nr=3 row_idx=3 cell_idx=1
+message='cell.text(Notes:\nO = Optional, M = Mandatory, P = Prohibited, NR = Not Recommended) no match(^(?:(?P<requirement>O|M|P|NR|Note)(?:[ \\d]*))?$)' figure_nr=3 table_nr=3 row_idx=3 cell_idx=1
 
 </pre>
 
@@ -10378,7 +10046,7 @@ message='cell.text(Notes:\nO = Optional, M = Mandatory, P = Prohibited, NR = Not
   <thead class="table-dark">
   <tr>
     
-    <th>FeatureIdentifier</th>
+    <th>Identifier</th>
     
     <th>Persist</th>
     
@@ -10550,7 +10218,7 @@ This column is only valid if the feature is not saveable (refer to the Specifcat
 
 message='Varying row lengths([5, 6])' figure_nr=35 lengths=[5, 6]
 
-message='cell.text(Notes:\nThis column is only valid if the feature is not saveable (refer to the Specifcation). If the feature is saveable, then this column is not used and any feature may be configured to be saved across power cycles and reset.) no match(^(?P<feature_identifier>[a-zA-Z0-9]{1,2}h)$)' figure_nr=35 table_nr=35 row_idx=3 cell_idx=0
+message='cell.text(Notes:\nThis column is only valid if the feature is not saveable (refer to the Specifcation). If the feature is saveable, then this column is not used and any feature may be configured to be saved across power cycles and reset.) no match(^(?P<identifier>[a-zA-Z0-9]{1,2}h)$)' figure_nr=35 table_nr=35 row_idx=3 cell_idx=0
 
 </pre>
 
@@ -10774,6 +10442,26 @@ No errors logged for this figure.
       </div>
     </div>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -11856,6 +11544,8 @@ No errors logged for this figure.
       </div>
     </div>
   </div>
+  
+  
   
   
   </div>
