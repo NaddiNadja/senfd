@@ -153,7 +153,6 @@ class IdentifyDataStructureFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*Identify.*Data.Structure.*"
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
-        REGEX_GRID_RANGE,
         REGEX_GRID_IO,
         REGEX_GRID_ADMIN,
         REGEX_GRID_DISCOVERY,
