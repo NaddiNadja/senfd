@@ -743,10 +743,11 @@ class FromFigureDocument(Converter):
         regex_hdr, regex_val = zip(*enriched.REGEX_GRID)
 
         header_names: List[str] = []
-
         fields: List[str] = []
         values: List[List[str | int]] = []
+
         assert enriched.table
+
         for row_idx, row in enumerate(enriched.table.rows[1:], 1):
             if not header_names:
                 header_matches = [
@@ -826,8 +827,6 @@ class FromFigureDocument(Converter):
 
         enriched.grid = senfd.tables.Grid(**data)
 
-        errors += FromFigureDocument.check_grid(enriched)
-
         return enriched, errors
 
     @staticmethod
@@ -879,9 +878,24 @@ class FromFigureDocument(Converter):
                     enriched, conv_errors = FromFigureDocument.enrich(
                         candidate, figure, match
                     )
-                    errors += conv_errors
                     if not enriched:
                         break
+
+                    grid_errors = FromFigureDocument.check_grid(enriched)
+                    # If three grid errors (no headers, fields nor values), this is not the right candidate
+                    if len(grid_errors) == 3:
+                        errors.append(
+                            senfd.errors.FigureError(
+                                figure_nr=enriched.figure_nr,
+                                message=(
+                                    f"{enriched.__class__.__name__}.REGEX_GRID did not match table, continuing"
+                                ),
+                            )
+                        )
+                        continue
+
+                    errors += conv_errors
+                    errors += grid_errors
 
                     candidates.append(enriched.__class__.__name__)
                     if not found:
