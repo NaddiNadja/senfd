@@ -543,6 +543,19 @@ class RequirementsFigure(EnrichedFigure):
     ]
 
 
+class RpmbFlowFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^RPMB\s.\s(?P<flow>.*Flow)$"
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        (r"^(Command)$", REGEX_ALL.replace("all", "command")),
+        (r"^(Bytes in Command)$", REGEX_ALL.replace("all", "bytes")),
+        (r"^(Field Name)$", REGEX_ALL.replace("all", "name")),
+        (r"^(Value)$", REGEX_ALL.replace("all", "value")),
+        (r"^(Objective)$", REGEX_ALL.replace("all", "objective")),
+    ]
+
+    flow: str
+
+
 class EnrichedFigureDocument(Document):
     SUFFIX_JSON: ClassVar[str] = ".enriched.figure.document.json"
     SUFFIX_HTML: ClassVar[str] = ".enriched.figure.document.html"
@@ -625,6 +638,7 @@ class EnrichedFigureDocument(Document):
     host_software_specified_field: List[HostSoftwareSpecifiedFieldFigure] = Field(
         default_factory=list
     )
+    rpmb_flow: List[RpmbFlowFigure] = Field(default_factory=list)
 
     nontabular: List[Figure] = Field(default_factory=list)
     uncategorized: List[Figure] = Field(default_factory=list)

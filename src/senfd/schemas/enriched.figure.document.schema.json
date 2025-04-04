@@ -1791,6 +1791,60 @@
             "title": "Row",
             "type": "object"
         },
+        "RpmbFlowFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "flow": {
+                    "title": "Flow",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "flow"
+            ],
+            "title": "RpmbFlowFigure",
+            "type": "object"
+        },
         "SkipElement": {
             "maxItems": 3,
             "minItems": 3,
@@ -2301,6 +2355,13 @@
                 "$ref": "#/$defs/HostSoftwareSpecifiedFieldFigure"
             },
             "title": "Host Software Specified Field",
+            "type": "array"
+        },
+        "rpmb_flow": {
+            "items": {
+                "$ref": "#/$defs/RpmbFlowFigure"
+            },
+            "title": "Rpmb Flow",
             "type": "array"
         },
         "nontabular": {
