@@ -385,6 +385,114 @@
             "title": "CommandCqeDwordFigure",
             "type": "object"
         },
+        "CommandDataBufferFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command_name": {
+                    "title": "Command Name",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command_name"
+            ],
+            "title": "CommandDataBufferFigure",
+            "type": "object"
+        },
+        "CommandDataFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command": {
+                    "title": "Command",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command"
+            ],
+            "title": "CommandDataFigure",
+            "type": "object"
+        },
         "CommandDwordFigure": {
             "properties": {
                 "figure_nr": {
@@ -881,6 +989,60 @@
             "title": "CompletionQueueFigure",
             "type": "object"
         },
+        "CreateQueueSpecificFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command": {
+                    "title": "Command",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command"
+            ],
+            "title": "CreateQueueSpecificFigure",
+            "type": "object"
+        },
         "DataStructureFigure": {
             "properties": {
                 "figure_nr": {
@@ -920,12 +1082,17 @@
                 },
                 "grid": {
                     "$ref": "#/$defs/Grid"
+                },
+                "command": {
+                    "title": "Command",
+                    "type": "string"
                 }
             },
             "required": [
                 "figure_nr",
                 "caption",
-                "description"
+                "description",
+                "command"
             ],
             "title": "DataStructureFigure",
             "type": "object"
@@ -1533,55 +1700,6 @@
             "title": "IdentifyCommandSqeDwordFigure",
             "type": "object"
         },
-        "IdentifyDataStructureFigure": {
-            "properties": {
-                "figure_nr": {
-                    "title": "Figure Nr",
-                    "type": "integer"
-                },
-                "caption": {
-                    "title": "Caption",
-                    "type": "string"
-                },
-                "description": {
-                    "title": "Description",
-                    "type": "string"
-                },
-                "page_nr": {
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Page Nr"
-                },
-                "table": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Table"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "grid": {
-                    "$ref": "#/$defs/Grid"
-                }
-            },
-            "required": [
-                "figure_nr",
-                "caption",
-                "description"
-            ],
-            "title": "IdentifyDataStructureFigure",
-            "type": "object"
-        },
         "IoControllerCommandSetSupportRequirementFigure": {
             "properties": {
                 "figure_nr": {
@@ -1634,6 +1752,60 @@
                 "command_set_name"
             ],
             "title": "IoControllerCommandSetSupportRequirementFigure",
+            "type": "object"
+        },
+        "LogPageFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command": {
+                    "title": "Command",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command"
+            ],
+            "title": "LogPageFigure",
             "type": "object"
         },
         "LogPageIdentifierFigure": {
@@ -1737,6 +1909,55 @@
                 "command_name"
             ],
             "title": "LogSpecificIdentifierFigure",
+            "type": "object"
+        },
+        "ManagementOperationSpecificFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description"
+            ],
+            "title": "ManagementOperationSpecificFigure",
             "type": "object"
         },
         "MappingTableFigure": {
@@ -2164,6 +2385,55 @@
                 "description"
             ],
             "title": "PropertyDefinitionFigure",
+            "type": "object"
+        },
+        "PrpEntryFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description"
+            ],
+            "title": "PrpEntryFigure",
             "type": "object"
         },
         "RequirementsFigure": {
@@ -2622,6 +2892,65 @@
             ],
             "title": "VersionDescriptorFieldValueFigure",
             "type": "object"
+        },
+        "ZoneDataFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command": {
+                    "title": "Command",
+                    "type": "string"
+                },
+                "response": {
+                    "title": "Response",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command",
+                "response"
+            ],
+            "title": "ZoneDataFigure",
+            "type": "object"
         }
     },
     "properties": {
@@ -2664,6 +2993,48 @@
             "title": "Data Structure",
             "type": "array"
         },
+        "create_queue_specific": {
+            "items": {
+                "$ref": "#/$defs/CreateQueueSpecificFigure"
+            },
+            "title": "Create Queue Specific",
+            "type": "array"
+        },
+        "log_page": {
+            "items": {
+                "$ref": "#/$defs/LogPageFigure"
+            },
+            "title": "Log Page",
+            "type": "array"
+        },
+        "prp_entry": {
+            "items": {
+                "$ref": "#/$defs/PrpEntryFigure"
+            },
+            "title": "Prp Entry",
+            "type": "array"
+        },
+        "command_data": {
+            "items": {
+                "$ref": "#/$defs/CommandDataFigure"
+            },
+            "title": "Command Data",
+            "type": "array"
+        },
+        "zone_data": {
+            "items": {
+                "$ref": "#/$defs/ZoneDataFigure"
+            },
+            "title": "Zone Data",
+            "type": "array"
+        },
+        "management_operation_specific": {
+            "items": {
+                "$ref": "#/$defs/ManagementOperationSpecificFigure"
+            },
+            "title": "Management Operation Specific",
+            "type": "array"
+        },
         "example": {
             "items": {
                 "$ref": "#/$defs/ExampleFigure"
@@ -2697,13 +3068,6 @@
                 "$ref": "#/$defs/CommandSupportRequirementFigure"
             },
             "title": "Command Support Requirement",
-            "type": "array"
-        },
-        "identify_data_structure": {
-            "items": {
-                "$ref": "#/$defs/IdentifyDataStructureFigure"
-            },
-            "title": "Identify Data Structure",
             "type": "array"
         },
         "identify_command_sqe_dword": {
@@ -2760,6 +3124,13 @@
                 "$ref": "#/$defs/CommandSqeDataPointerFigure"
             },
             "title": "Command Sqe Data Pointer",
+            "type": "array"
+        },
+        "command_data_buffer": {
+            "items": {
+                "$ref": "#/$defs/CommandDataBufferFigure"
+            },
+            "title": "Command Data Buffer",
             "type": "array"
         },
         "command_sqe_metadata_pointer": {

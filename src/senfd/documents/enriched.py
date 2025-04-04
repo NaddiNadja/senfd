@@ -141,7 +141,44 @@ class EnrichedFigure(Figure):
 
 class DataStructureFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"^(?!.*Status Code|.*Vendor|.*Log.Page.Identifiers|.*Types).*(Log.Page|Data.Structure|Data).*$"
+        r"^(?P<command>.*?)( -)? (Data.)?Structure(.Entry|.for.*|,.*)?$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command: str
+
+
+class CreateQueueSpecificFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<command>.*?)( -)? Create Queue Specific$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command: str
+
+
+class LogPageFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<command>.*?)( -)? (Log.Page(.Entry|.for.*)?)$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command: str
+
+
+class PrpEntryFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^PRP Entry - (.*)$|"
+        r"^(.*?)( -)? PRP Entry \d$"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
@@ -149,15 +186,39 @@ class DataStructureFigure(EnrichedFigure):
     ]
 
 
-class IdentifyDataStructureFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*Identify.*Data.Structure.*"
+class ManagementOperationSpecificFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^Management Operation Specific:? .*"
+        r"|"
+        r".* - Management Operation Specific$"
+    )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
-        REGEX_GRID_IO,
-        REGEX_GRID_ADMIN,
-        REGEX_GRID_DISCOVERY,
         REGEX_GRID_FIELD_DESCRIPTION,
     ]
+
+
+class CommandDataFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^(?P<command>.*) (- Data|Data Frame)$"
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command: str
+
+
+class ZoneDataFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<command>.*) Data for (?P<response>.*)$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command: str
+    response: str
 
 
 class DataTypeFigure(EnrichedFigure):
@@ -232,6 +293,18 @@ class CnsValueFigure(EnrichedFigure):
 class CommandSqeDataPointerFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
         r"(?P<command_name>[\w()\/\-\s]+)\s+-\s+Data\s+Pointer"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command_name: str
+
+
+class CommandDataBufferFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"(?P<command_name>[\w()/\-\s]+)\s+-\s+Data\s+Buffer$"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
@@ -489,7 +562,9 @@ class OffsetFigure(EnrichedFigure):
 
 
 class ParameterFieldFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^.*(Parameter.Field)$"
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^.*((Specific|Parameter|Flag|Field)s? ?){2,3}$"
+    )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
         REGEX_GRID_FIELD_DESCRIPTION,
@@ -497,7 +572,7 @@ class ParameterFieldFigure(EnrichedFigure):
 
 
 class SubmissionQueueFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*(Submission.Queue.Entry).*"
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*(Submission.Queue.Entry)$"
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
         REGEX_GRID_FIELD_DESCRIPTION,
@@ -560,9 +635,7 @@ class StatusValueFigure(EnrichedFigure):
 
 
 class FormatFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"^(?!.*IEEE|Sanitize.Operations).*\s(Format).*$"
-    )
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^.*\s(Format\b).*$"
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
         REGEX_GRID_FIELD_DESCRIPTION,
@@ -697,6 +770,14 @@ class EnrichedFigureDocument(Document):
 
     acronyms: List[AcronymsFigure] = Field(default_factory=list)
     data_structure: List[DataStructureFigure] = Field(default_factory=list)
+    create_queue_specific: List[CreateQueueSpecificFigure] = Field(default_factory=list)
+    log_page: List[LogPageFigure] = Field(default_factory=list)
+    prp_entry: List[PrpEntryFigure] = Field(default_factory=list)
+    command_data: List[CommandDataFigure] = Field(default_factory=list)
+    zone_data: List[ZoneDataFigure] = Field(default_factory=list)
+    management_operation_specific: List[ManagementOperationSpecificFigure] = Field(
+        default_factory=list
+    )
     example: List[ExampleFigure] = Field(default_factory=list)
     io_controller_command_set_support_requirement: List[
         IoControllerCommandSetSupportRequirementFigure
@@ -704,9 +785,6 @@ class EnrichedFigureDocument(Document):
     command_admin_opcode: List[CommandAdminOpcodeFigure] = Field(default_factory=list)
     command_io_opcode: List[CommandIoOpcodeFigure] = Field(default_factory=list)
     command_support_requirement: List[CommandSupportRequirementFigure] = Field(
-        default_factory=list
-    )
-    identify_data_structure: List[IdentifyDataStructureFigure] = Field(
         default_factory=list
     )
     identify_command_sqe_dword: List[IdentifyCommandSqeDwordFigure] = Field(
@@ -725,6 +803,7 @@ class EnrichedFigureDocument(Document):
     command_sqe_data_pointer: List[CommandSqeDataPointerFigure] = Field(
         default_factory=list
     )
+    command_data_buffer: List[CommandDataBufferFigure] = Field(default_factory=list)
     command_sqe_metadata_pointer: List[CommandSqeMetadataPointer] = Field(
         default_factory=list
     )
