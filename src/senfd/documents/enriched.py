@@ -231,7 +231,7 @@ class CnsValueFigure(EnrichedFigure):
 
 class CommandSqeDataPointerFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[\w\s]+)\s+-\s+Data\s+Pointer"
+        r"(?P<command_name>[\w()\/\-\s]+)\s+-\s+Data\s+Pointer"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
@@ -251,7 +251,7 @@ class ExampleFigure(EnrichedFigure):
 
 class CommandSqeMetadataPointer(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[\w\s]+)\s+-\s+Metadata\s+Pointer"
+        r"(?P<command_name>[\w()\/\-\s]+)\s+-\s+Metadata\s+Pointer"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
@@ -263,7 +263,7 @@ class CommandSqeMetadataPointer(EnrichedFigure):
 
 class CommandSqeDwordLowerUpperFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[\w\s]+)\s*-\s*Command\s*Dword\s*"
+        r"(?P<command_name>[\w()\/\-\s]+)\s*-\s*Command\s*Dword\s*"
         r"(?P<command_dword_lower>\d+)"
         r".*and.*?\s(?P<command_dword_upper>\d+)$"
     )
@@ -279,7 +279,7 @@ class CommandSqeDwordLowerUpperFigure(EnrichedFigure):
 
 class CommandSqeDwordFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"^(?P<command_name>[-a-zA-Z\w\s\/]+(?:\(\w*\))?)\s*[-–—]\s+"
+        r"^(?P<command_name>[\w()\/\-\s]+(?:\(\w*\))?)\s*[-–—]\s+"
         r"Command\s*Dword\s*(?P<command_dword>\d+)$"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
@@ -356,7 +356,7 @@ class LogSpecificIdentifierFigure(EnrichedFigure):
 
 class CommandCqeDwordFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[\w\s]+)\s+-\s+"
+        r"(?P<command_name>[\w()\/\-\s]+)\s+-\s+"
         r"Completion\sQueue\sEntry\sDword\s(?P<command_dword>\d+)"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
@@ -411,7 +411,7 @@ class GeneralCommandStatusValueFigure(EnrichedFigure):
 
 class GenericCommandStatusValueFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[a-zA-Z -/]*).-.Generic.Command.Status.Values.*"
+        r"(?P<command_name>[\w()\/\-\s]+).-.Generic.Command.Status.Values.*"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_VALUE,
@@ -421,7 +421,7 @@ class GenericCommandStatusValueFigure(EnrichedFigure):
 
 class CommandSpecificStatusValueFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[\w\s]+)\s+-\s+Command\s+Specific\s+Status\s+Values"
+        r"(?P<command_name>[\w()\/\-\s]+)\s+-\s+Command\s+Specific\s+Status\s+Values"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_VALUE,
