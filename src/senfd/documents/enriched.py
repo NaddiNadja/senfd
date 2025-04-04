@@ -304,6 +304,18 @@ class IdentifyCommandSqeDwordFigure(EnrichedFigure):
     command_dword: int
 
 
+class LogSpecificIdentifierFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<command_name>[\w()/\-\s]+?) - Log Specific Identifier$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command_name: str
+
+
 class CommandCqeDwordFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
         r"(?P<command_name>[\w\s]+)\s+-\s+"
@@ -562,6 +574,9 @@ class EnrichedFigureDocument(Document):
         default_factory=list
     )
     identify_command_sqe_dword: List[IdentifyCommandSqeDwordFigure] = Field(
+        default_factory=list
+    )
+    log_specific_identifier: List[LogSpecificIdentifierFigure] = Field(
         default_factory=list
     )
     command_sqe_dword: List[CommandSqeDwordFigure] = Field(default_factory=list)

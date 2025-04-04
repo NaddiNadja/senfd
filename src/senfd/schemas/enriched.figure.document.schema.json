@@ -1528,6 +1528,60 @@
             "title": "LogPageIdentifierFigure",
             "type": "object"
         },
+        "LogSpecificIdentifierFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command_name": {
+                    "title": "Command Name",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command_name"
+            ],
+            "title": "LogSpecificIdentifierFigure",
+            "type": "object"
+        },
         "OffsetFigure": {
             "properties": {
                 "figure_nr": {
@@ -2058,6 +2112,13 @@
                 "$ref": "#/$defs/IdentifyCommandSqeDwordFigure"
             },
             "title": "Identify Command Sqe Dword",
+            "type": "array"
+        },
+        "log_specific_identifier": {
+            "items": {
+                "$ref": "#/$defs/LogSpecificIdentifierFigure"
+            },
+            "title": "Log Specific Identifier",
             "type": "array"
         },
         "command_sqe_dword": {
