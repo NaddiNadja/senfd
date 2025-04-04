@@ -352,7 +352,7 @@ class CommandSqeDwordLowerUpperFigure(EnrichedFigure):
 
 class CommandSqeDwordFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"^(?P<command_name>[\w()\/\-\s]+(?:\(\w*\))?)\s*[-–—]\s+"
+        r"^(?P<command_name>[\w()\/\-\s&]+?)\s?[-–—]\s+"
         r"Command\s*Dword\s*(?P<command_dword>\d+)$"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
@@ -459,7 +459,7 @@ class CommandAdminOpcodeFigure(EnrichedFigure):
 
 class CommandIoOpcodeFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"Opcodes\sfor\s(?P<command_set_name>.*?)"
+        r"Opcodes\sfor\s(?!Admin)(?P<command_set_name>.*?)"
         r"\s(Commands|Command Set|Command Set Commands)"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
@@ -489,6 +489,7 @@ class GenericCommandStatusValueFigure(EnrichedFigure):
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_VALUE,
         REGEX_GRID_VALUE_DESCRIPTION,
+        (r"(I/O Command Set).*", REGEX_ALL.replace("all", "command_sets")),
     ]
 
 
@@ -505,7 +506,7 @@ class CommandSpecificStatusValueFigure(EnrichedFigure):
 
 
 class FeatureIdentifierFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*Feature\s*Identifiers.*"
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"Feature\s*Identifiers.*"
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_FEATURE_IDENTIFIER,
         REGEX_GRID_FEATURE_PAPCR,
@@ -552,13 +553,15 @@ class LogPageIdentifierFigure(EnrichedFigure):
 
 
 class OffsetFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*offset"
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^Offset (?P<offset>.*?): .*$"
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
-        (r"(Type).*", REGEX_ALL),
+        (r"(Type).*", REGEX_ALL.replace("all", "type")),
         (r"(Reset).*", REGEX_VAL_HEXSTR.replace("hex", "reset")),
-        REGEX_GRID_EXPLANATION,
+        REGEX_GRID_FIELD_DESCRIPTION,
     ]
+
+    offset: str
 
 
 class ParameterFieldFigure(EnrichedFigure):
@@ -580,7 +583,9 @@ class SubmissionQueueFigure(EnrichedFigure):
 
 
 class DescriptorFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^.*(Descriptor)$"
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<name>.*) Descriptor( (List|Entry|Flags?|Type|Format Types|Header Template))?$"
+    )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
         REGEX_GRID_FIELD_DESCRIPTION,
@@ -601,13 +606,13 @@ class PropertyDefinitionFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*Property Definition.*"
     REGEX_GRID: ClassVar[List[Tuple]] = [
         (r"(Offset.\(OFST\)).*", REGEX_VAL_HEXSTR),
-        (r"(Size.\(in.bytes\)).*", REGEX_VAL_NUMBER_OPTIONAL),
+        (r"(Size.\(in.bytes\)).*", REGEX_VAL_NUMBER_OPTIONAL.replace("number", "size")),
         (
             r"(I/O Controller).*",
             REGEX_VAL_REQUIREMENT.replace("requirement", "req_ioc"),
         ),
         (
-            r"(Administrative.Controller).*",
+            r"((Administrative|Admin.).Controller).*",
             REGEX_VAL_REQUIREMENT.replace("requirement", "req_ac"),
         ),
         (

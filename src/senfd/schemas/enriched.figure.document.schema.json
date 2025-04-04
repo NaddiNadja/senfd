@@ -2166,12 +2166,17 @@
                 },
                 "grid": {
                     "$ref": "#/$defs/Grid"
+                },
+                "offset": {
+                    "title": "Offset",
+                    "type": "string"
                 }
             },
             "required": [
                 "figure_nr",
                 "caption",
-                "description"
+                "description",
+                "offset"
             ],
             "title": "OffsetFigure",
             "type": "object"
