@@ -743,6 +743,7 @@ class FromFigureDocument(Converter):
         regex_hdr, regex_val = zip(*enriched.REGEX_GRID)
 
         header_names: List[str] = []
+        column_indices: List[int] = []  # which columns matches the REGEX_GRID/Headers
         fields: List[str] = []
         values: List[List[str | int]] = []
 
@@ -750,15 +751,21 @@ class FromFigureDocument(Converter):
 
         for row_idx, row in enumerate(enriched.table.rows[1:], 1):
             if not header_names:
-                header_matches = [
-                    header_match.group(1) if header_match else header_match
-                    for header_match in (
-                        re.match(regex, cell.text.strip().replace("\n", " "))
-                        for cell, regex in zip(row.cells, regex_hdr)
+                header_matches = []
+                rgx_idx, cell_idx = 0, 0
+                while rgx_idx < len(regex_hdr) and cell_idx < len(row.cells):
+                    m = re.match(
+                        regex_hdr[rgx_idx],
+                        row.cells[cell_idx].text.strip().replace("\n", " "),
                     )
-                ]
-                if all(header_matches):
-                    header_names = [str(hdr) for hdr in header_matches]
+                    if m:
+                        header_matches.append((m.group(1), cell_idx))
+                        rgx_idx += 1
+                    cell_idx += 1
+
+                if len(header_matches) == len(regex_hdr):
+                    header_names = [str(hdr[0]) for hdr in header_matches]
+                    column_indices = [hdr[1] for hdr in header_matches]
                 else:
                     mismatches = [
                         (
@@ -781,7 +788,8 @@ class FromFigureDocument(Converter):
 
             combined = {}
             value_errors: List[Error] = []
-            for cell_idx, (cell, regex) in enumerate(zip(row.cells, regex_val)):
+            cells = [row.cells[idx] for idx in column_indices]
+            for cell_idx, (cell, regex) in enumerate(zip(cells, regex_val)):
                 text = cell.text.strip().translate(TRANSLATION_TABLE)
                 match = re.match(regex, text)  # type: ignore
                 if match:
@@ -879,6 +887,7 @@ class FromFigureDocument(Converter):
                         candidate, figure, match
                     )
                     if not enriched:
+                        errors += conv_errors
                         break
 
                     grid_errors = FromFigureDocument.check_grid(enriched)
