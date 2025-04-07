@@ -868,6 +868,9 @@ class FromFigureDocument(Converter):
 
             match = None
             description = figure.description.translate(TRANSLATION_TABLE)
+            candidates = []
+            found: EnrichedFigure | None = None
+
             for candidate in figure_organizers:
                 match = re.match(
                     candidate.REGEX_FIGURE_DESCRIPTION, description, flags=re.IGNORECASE
@@ -879,10 +882,24 @@ class FromFigureDocument(Converter):
                     errors += conv_errors
                     if not enriched:
                         break
-                    enriched.into_document(document)
-                    break
 
-            if not match:
+                    candidates.append(enriched.__class__.__name__)
+                    if not found:
+                        found = enriched
+
+            if not found:
                 document.uncategorized.append(figure)
+            elif len(candidates) == 1:
+                found.into_document(document)
+            elif len(candidates) > 1:
+                document.uncategorized.append(figure)
+                errors.append(
+                    senfd.errors.FigureError(
+                        figure_nr=found.figure_nr,
+                        message=(
+                            f"Failed classifying table; Matched on multiple figures: {', '.join(c for c in candidates)}"
+                        ),
+                    )
+                )
 
         return document, errors
