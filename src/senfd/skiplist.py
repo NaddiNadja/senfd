@@ -73,7 +73,8 @@ class SkipPatterns:
     figure_map: Dict[int, SkipElement]
 
     def __init__(self, list_path: Optional[Path], figures: List[Figure]) -> None:
-        """Initialise the SkipSet class.
+        """
+        Initialise the SkipPatterns class.
 
         Is used to create a map of which figures should be skipped.
         It does also ensure that it matches exactly the number of expected
@@ -126,16 +127,17 @@ class SkipPatterns:
                     f"The number of matches for skip element {skip} was not as expected: {skip.matches != count}"
                 )
 
-    def skip_figure(self, figure: Figure) -> bool:
-        """Method that tells if figure should be skipped
-        or not.
+    def skip_figure(self, figure: Figure) -> SkipElement | None:
+        """
+        Method that tells if figure should be skipped or not.
 
         Args:
             figure (Figure)
 
         Returns:
-            bool: returns if the figure should be skipped or not.
+            SkipElement | None: Returns the skip element related to the
+            given figure, or None if the figure is not in the skip list.
         """
         if figure.figure_nr in self.figure_map:
-            return True
-        return False
+            return self.figure_map[figure.figure_nr]
+        return None

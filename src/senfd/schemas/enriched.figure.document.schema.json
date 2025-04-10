@@ -1737,6 +1737,25 @@
             "title": "Row",
             "type": "object"
         },
+        "SkipElement": {
+            "maxItems": 3,
+            "minItems": 3,
+            "prefixItems": [
+                {
+                    "title": "Pattern",
+                    "type": "string"
+                },
+                {
+                    "title": "Description",
+                    "type": "string"
+                },
+                {
+                    "title": "Matches",
+                    "type": "integer"
+                }
+            ],
+            "type": "array"
+        },
         "StatusCodeFigure": {
             "properties": {
                 "figure_nr": {
@@ -1955,6 +1974,14 @@
     "properties": {
         "meta": {
             "$ref": "#/$defs/DocumentMeta"
+        },
+        "skip_map": {
+            "additionalProperties": {
+                "$ref": "#/$defs/SkipElement"
+            },
+            "default": {},
+            "title": "Skip Map",
+            "type": "object"
         },
         "acronyms": {
             "items": {

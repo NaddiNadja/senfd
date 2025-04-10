@@ -92,7 +92,7 @@
 
   <!-- Sections and figures under those sections -->
   <div class="container mt-5">
-  {% for section, figures in document.items() if section != "meta" %}
+  {% for section, figures in document.items() if section != "meta" and section != "skip_map" %}
   {% for figure in figures %}
   {% set figure_error_count = figure_errors.get(figure.figure_nr, []) | count %}
   <div class="card mb-4">
@@ -122,7 +122,11 @@
       <div class="tab-content" id="tabcontent">
         <div class="tab-pane fade show active" id="grid_{{figure.figure_nr}}" role="tabpanel" aria-labelledby="grid_tab_{{figure.figure_nr}}">
           <!-- GRID TABLE rendered -->
-          {{ render_grid(figure.get('grid', None)) }}
+          {% if figure.figure_nr in document.skip_map %}
+            Skipped with reason: {{ document.skip_map[figure.figure_nr][1] }}
+          {% else %}
+            {{ render_grid(figure.get('grid', None)) }}
+          {% endif %}
         </div>
         <div class="tab-pane fade" id="table_{{figure.figure_nr}}" role="tabpanel" aria-labelledby="table_tab_{{figure.figure_nr}}">
           <!-- RAW TABLE rendered here -->

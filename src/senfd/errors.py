@@ -81,3 +81,7 @@ class InvalidBitTableEntry(FigureError):
 
 class MultipleClassifierMatchException(Exception):
     pass
+
+
+class SkipFigureError(FigureError):
+    pass

@@ -2,7 +2,7 @@ import inspect
 import re
 from argparse import Namespace
 from pathlib import Path
-from typing import ClassVar, List, Optional, Tuple, Type, TypeVar
+from typing import ClassVar, Dict, List, Optional, Tuple, Type, TypeVar
 
 from pydantic import Field
 
@@ -17,7 +17,7 @@ from senfd.documents.base import (
 )
 from senfd.documents.plain import Figure, FigureDocument
 from senfd.errors import Error
-from senfd.skiplist import SkipPatterns
+from senfd.skiplist import SkipPatterns, SkipElement
 from senfd.utils import pascal_to_snake
 
 REGEX_ALL = r"(?P<all>.*)"
@@ -538,6 +538,8 @@ class EnrichedFigureDocument(Document):
     FILENAME_SCHEMA: ClassVar[str] = "enriched.figure.document.schema.json"
     FILENAME_HTML_TEMPLATE: ClassVar[str] = "enriched.figure.document.html.jinja2"
 
+    skip_map: Dict[int, SkipElement] = {}
+
     acronyms: List[AcronymsFigure] = Field(default_factory=list)
     data_structure: List[DataStructureFigure] = Field(default_factory=list)
     example: List[ExampleFigure] = Field(default_factory=list)
@@ -864,13 +866,15 @@ class FromFigureDocument(Converter):
 
         document = EnrichedFigureDocument()
         document.meta.stem = strip_all_suffixes(path.stem)
-        skip_set = SkipPatterns(skip_patterns, figure_document.figures)
+        skip_patterns = SkipPatterns(skip_patterns, figure_document.figures)
+        document.skip_map = skip_patterns.figure_map
         figure_organizers = FromFigureDocument.get_figure_enriching_classes()
         for figure in figure_document.figures:
             if not figure.table:
                 document.nontabular.append(figure)
                 continue
-            if skip_set.skip_figure(figure):
+            skip = skip_patterns.skip_figure(figure)
+            if skip:
                 document.skipped.append(figure)
                 continue
 
