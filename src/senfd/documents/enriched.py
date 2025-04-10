@@ -659,15 +659,16 @@ class FromFigureDocument(Converter):
                 [],
             )
 
-        lengths = list(set([len(row.cells) for row in figure.table.rows]))
+        lengths = list(set([len(row.cells) for row in figure.table.rows[1:]]))
         if len(lengths) != 1:
-            return None, [
+            return (
                 senfd.errors.IrregularTableError(
                     figure_nr=figure.figure_nr,
                     message=f"Varying row lengths({lengths})",
                     lengths=lengths,
-                )
-            ]
+                ),
+                [],
+            )
 
         return None, []
 
