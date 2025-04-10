@@ -1,0 +1,9 @@
+[[skip]]
+regex = "^Identify Controller Data Structure, Computational Programs Command Set Dependent – General$"
+matches = 1
+description = "An error in the way the last row is set up makes the row length vary, which breaks the enrich() function"
+
+[[skip]]
+regex = "^Computational Programs Command Set Specification Version Descriptor Field Values$"
+matches = 1
+description = "An error in the way the last row is set up makes the row length vary, which breaks the enrich() function"
