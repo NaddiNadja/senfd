@@ -1832,6 +1832,60 @@
             "title": "RequirementsFigure",
             "type": "object"
         },
+        "ResponseFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "name"
+            ],
+            "title": "ResponseFigure",
+            "type": "object"
+        },
         "Row": {
             "properties": {
                 "cells": {
@@ -2484,6 +2538,13 @@
                 "$ref": "#/$defs/StateTransitionConditionFigure"
             },
             "title": "State Transition Condition",
+            "type": "array"
+        },
+        "response": {
+            "items": {
+                "$ref": "#/$defs/ResponseFigure"
+            },
+            "title": "Response",
             "type": "array"
         },
         "nontabular": {
