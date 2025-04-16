@@ -7,3 +7,43 @@ description = "Not relevant"
 regex = "^Byte, Word, and Dword Relationships$"
 matches = 1
 description = "Not relevant"
+
+[[skip]]
+regex = "NVM Express Base Specification Version Property Reset Values"
+matches = 1
+description = "Not relevant"
+
+[[skip]]
+regex = ".*Layout.*"
+matches = 4
+description = "Not relevant"
+
+[[skip]]
+regex = "^Current Value after .*"
+matches = 2
+description = "Not relevant"
+
+[[skip]]
+regex = ".*\\bDH-HMAC-CHAP\\b.*"
+matches = 14
+description = "Not relevant"
+
+[[skip]]
+regex = "(Namespace Globally|IEEE Extended|IEEE OUI) (Unique )?Identifier .*|MA-L similarity to WWN"
+matches = 9
+description = "Not relevant"
+
+[[skip]]
+regex = "SGL Validation Error Conditions"
+matches = 1
+description = "The validation error conditions are not essential for the data model"
+
+[[skip]]
+regex = "Telemetry Log Example.*|Example Device Self-test Operation.*|Example Power State Descriptor Table"
+matches = 4
+description = "Examples are not necessary for building a data model"
+
+[[skip]]
+regex = "mDNS .*"
+matches = 3
+description = "Not relevant"
