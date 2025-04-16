@@ -601,6 +601,16 @@ class AttributesEntryFigure(EnrichedFigure):
     name: str
 
 
+class AdditionalHardwareErrorInfoFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^Additional.Hardware.Error.Information.*$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+
 class EnrichedFigureDocument(Document):
     SUFFIX_JSON: ClassVar[str] = ".enriched.figure.document.json"
     SUFFIX_HTML: ClassVar[str] = ".enriched.figure.document.html"
@@ -690,6 +700,9 @@ class EnrichedFigureDocument(Document):
     )
     response: List[ResponseFigure] = Field(default_factory=list)
     attributes_entry: List[AttributesEntryFigure] = Field(default_factory=list)
+    additional_hardware_error_info: List[AdditionalHardwareErrorInfoFigure] = Field(
+        default_factory=list
+    )
 
     nontabular: List[Figure] = Field(default_factory=list)
     uncategorized: List[Figure] = Field(default_factory=list)

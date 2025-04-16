@@ -49,6 +49,55 @@
             "title": "AcronymsFigure",
             "type": "object"
         },
+        "AdditionalHardwareErrorInfoFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description"
+            ],
+            "title": "AdditionalHardwareErrorInfoFigure",
+            "type": "object"
+        },
         "AsynchronousEventInformationFigure": {
             "properties": {
                 "figure_nr": {
@@ -2606,6 +2655,13 @@
                 "$ref": "#/$defs/AttributesEntryFigure"
             },
             "title": "Attributes Entry",
+            "type": "array"
+        },
+        "additional_hardware_error_info": {
+            "items": {
+                "$ref": "#/$defs/AdditionalHardwareErrorInfoFigure"
+            },
+            "title": "Additional Hardware Error Info",
             "type": "array"
         },
         "nontabular": {
