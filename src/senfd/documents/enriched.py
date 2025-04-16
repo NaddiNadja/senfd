@@ -539,6 +539,13 @@ class EnrichedFigureDocument(Document):
     FILENAME_HTML_TEMPLATE: ClassVar[str] = "enriched.figure.document.html.jinja2"
 
     skip_map: Dict[int, SkipElement] = {}
+    stats: Dict[str, int] = {
+        "skipped": 0,
+        "nontabular": 0,
+        "uncategorized": 0,
+        "categorized": 0,
+        "max_figure_number": 0,
+    }
 
     acronyms: List[AcronymsFigure] = Field(default_factory=list)
     data_structure: List[DataStructureFigure] = Field(default_factory=list)
@@ -870,12 +877,17 @@ class FromFigureDocument(Converter):
         document.skip_map = skip_patterns.figure_map
         figure_organizers = FromFigureDocument.get_figure_enriching_classes()
         for figure in figure_document.figures:
+            if figure.figure_nr > document.stats["max_figure_number"]:
+                document.stats["max_figure_number"] = figure.figure_nr
+
             if not figure.table:
                 document.nontabular.append(figure)
+                document.stats["nontabular"] += 1
                 continue
             skip = skip_patterns.skip_figure(figure)
             if skip:
                 document.skipped.append(figure)
+                document.stats["skipped"] += 1
                 continue
 
             match = None
@@ -917,10 +929,13 @@ class FromFigureDocument(Converter):
 
             if not found:
                 document.uncategorized.append(figure)
+                document.stats["uncategorized"] += 1
             elif len(candidates) == 1:
                 found.into_document(document)
+                document.stats["categorized"] += 1
             elif len(candidates) > 1:
                 document.uncategorized.append(figure)
+                document.stats["uncategorized"] += 1
                 errors.append(
                     senfd.errors.FigureError(
                         figure_nr=found.figure_nr,

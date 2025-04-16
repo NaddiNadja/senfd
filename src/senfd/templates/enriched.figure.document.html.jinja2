@@ -5,25 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>enriched {{ document.meta.stem }}</title>
+    <style>
+.document-stats {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background: var(--bs-border-color);
+  gap: 1px 0px;
+  padding: 0;
+  margin: 20px;
+}
+.document-stats > * {
+  background: white;
+  padding: 6px;
+}
+.document-stats .hdr {
+  font-weight: bold;
+}
+@media (max-width: 1300px) {
+  .document-stats {
+    text-align: left;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr auto;
+  }
+}
+    </style>
   </head>
   <body>
 
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Document figure stats.</h3>
+      <h3 class="card-title">Document figure stats</h3>
     </div>
-    <div class="card-body">
-
-      <table class="table">
-      <tr>
-        <td>Uncategorized</td>
-        <td>{{ document.uncategorized | length }}</td>
-      <tr>
-      </tr>
-        <td>Non-tabular</td>
-        <td>{{ document.nontabular | length }}</td>
-      </table>
-
+    <div class="card-body document-stats">
+      <div class="hdr">Total number of figures</div>
+      <div class="hdr">Categorized</div>
+      <div class="hdr">Uncategorized</div>
+      <div class="hdr">Non-tabular</div>
+      <div class="hdr">Skipped</div>
+      <div class="hdr">Maximum figure number</div>
+      <div>{{ document.stats["skipped"] + document.stats["uncategorized"] + document.stats["categorized"] + document.stats["nontabular"] }}</div>
+      <div>{{ document.stats["categorized"] }}</div>
+      <div>{{ document.stats["uncategorized"] }}</div>
+      <div>{{ document.stats["nontabular"] }}</div>
+      <div>{{ document.stats["skipped"] }}</div>
+      <div>{{ document.stats["max_figure_number"] }}</div>
     </div>
   </div>
   
@@ -92,7 +119,7 @@
 
   <!-- Sections and figures under those sections -->
   <div class="container mt-5">
-  {% for section, figures in document.items() if section != "meta" and section != "skip_map" %}
+  {% for section, figures in document.items() if not (section in ["meta", "skip_map", "stats"]) %}
   {% for figure in figures %}
   {% set figure_error_count = figure_errors.get(figure.figure_nr, []) | count %}
   <div class="card mb-4">

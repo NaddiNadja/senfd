@@ -1983,6 +1983,20 @@
             "title": "Skip Map",
             "type": "object"
         },
+        "stats": {
+            "additionalProperties": {
+                "type": "integer"
+            },
+            "default": {
+                "skipped": 0,
+                "nontabular": 0,
+                "uncategorized": 0,
+                "categorized": 0,
+                "max_figure_number": 0
+            },
+            "title": "Stats",
+            "type": "object"
+        },
         "acronyms": {
             "items": {
                 "$ref": "#/$defs/AcronymsFigure"
