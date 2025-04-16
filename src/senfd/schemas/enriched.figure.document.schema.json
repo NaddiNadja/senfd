@@ -601,60 +601,6 @@
             "title": "CommandIoOpcodeFigure",
             "type": "object"
         },
-        "CommandSpecificStatusValueFigure": {
-            "properties": {
-                "figure_nr": {
-                    "title": "Figure Nr",
-                    "type": "integer"
-                },
-                "caption": {
-                    "title": "Caption",
-                    "type": "string"
-                },
-                "description": {
-                    "title": "Description",
-                    "type": "string"
-                },
-                "page_nr": {
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Page Nr"
-                },
-                "table": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Table"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "grid": {
-                    "$ref": "#/$defs/Grid"
-                },
-                "command_name": {
-                    "title": "Command Name",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "figure_nr",
-                "caption",
-                "description",
-                "command_name"
-            ],
-            "title": "CommandSpecificStatusValueFigure",
-            "type": "object"
-        },
         "CommandSqeDataPointerFigure": {
             "properties": {
                 "figure_nr": {
@@ -1500,55 +1446,6 @@
                 "description"
             ],
             "title": "GeneralCommandStatusValueFigure",
-            "type": "object"
-        },
-        "GenericCommandStatusValueFigure": {
-            "properties": {
-                "figure_nr": {
-                    "title": "Figure Nr",
-                    "type": "integer"
-                },
-                "caption": {
-                    "title": "Caption",
-                    "type": "string"
-                },
-                "description": {
-                    "title": "Description",
-                    "type": "string"
-                },
-                "page_nr": {
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Page Nr"
-                },
-                "table": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Table"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "grid": {
-                    "$ref": "#/$defs/Grid"
-                }
-            },
-            "required": [
-                "figure_nr",
-                "caption",
-                "description"
-            ],
-            "title": "GenericCommandStatusValueFigure",
             "type": "object"
         },
         "Grid": {
@@ -2772,12 +2669,29 @@
                 },
                 "grid": {
                     "$ref": "#/$defs/Grid"
+                },
+                "command_name": {
+                    "title": "Command Name",
+                    "type": "string"
+                },
+                "commands": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Commands"
                 }
             },
             "required": [
                 "figure_nr",
                 "caption",
-                "description"
+                "description",
+                "command_name",
+                "commands"
             ],
             "title": "StatusValueFigure",
             "type": "object"
@@ -3152,25 +3066,11 @@
             "title": "Command Cqe Dword",
             "type": "array"
         },
-        "command_specific_status_value": {
-            "items": {
-                "$ref": "#/$defs/CommandSpecificStatusValueFigure"
-            },
-            "title": "Command Specific Status Value",
-            "type": "array"
-        },
         "general_command_status_value": {
             "items": {
                 "$ref": "#/$defs/GeneralCommandStatusValueFigure"
             },
             "title": "General Command Status Value",
-            "type": "array"
-        },
-        "generic_command_status_value": {
-            "items": {
-                "$ref": "#/$defs/GenericCommandStatusValueFigure"
-            },
-            "title": "Generic Command Status Value",
             "type": "array"
         },
         "cns_value": {

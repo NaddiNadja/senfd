@@ -473,6 +473,27 @@ class CommandIoOpcodeFigure(EnrichedFigure):
     command_set_name: str
 
 
+class StatusCodeFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^(Status.Code.-).*(Type|Error).Values$"
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_VALUE,
+        REGEX_GRID_VALUE_DESCRIPTION,
+    ]
+
+
+class StatusValueFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<command_name>[\w()\/\-\s]+)\s+-?.*(Status.Values?)(, (?P<commands>.*))?$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_VALUE,
+        REGEX_GRID_VALUE_DESCRIPTION,
+    ]
+
+    command_name: str
+    commands: str | None
+
+
 class GeneralCommandStatusValueFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*General.Command.Status.Values.*"
     REGEX_GRID: ClassVar[List[Tuple]] = [
@@ -480,29 +501,6 @@ class GeneralCommandStatusValueFigure(EnrichedFigure):
         REGEX_GRID_VALUE_DESCRIPTION,
         REGEX_GRID_COMMANDS_AFFECTED,
     ]
-
-
-class GenericCommandStatusValueFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[\w()\/\-\s]+).-.Generic.Command.Status.Values.*"
-    )
-    REGEX_GRID: ClassVar[List[Tuple]] = [
-        REGEX_GRID_VALUE,
-        REGEX_GRID_VALUE_DESCRIPTION,
-        (r"(I/O Command Set).*", REGEX_ALL.replace("all", "command_sets")),
-    ]
-
-
-class CommandSpecificStatusValueFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r"(?P<command_name>[\w()\/\-\s]+)\s+-\s+Command\s+Specific\s+Status\s+Values"
-    )
-    REGEX_GRID: ClassVar[List[Tuple]] = [
-        REGEX_GRID_VALUE,
-        REGEX_GRID_VALUE_DESCRIPTION,
-        REGEX_GRID_COMMANDS_AFFECTED,
-    ]
-    command_name: str
 
 
 class FeatureIdentifierFigure(EnrichedFigure):
@@ -620,22 +618,6 @@ class PropertyDefinitionFigure(EnrichedFigure):
             REGEX_VAL_REQUIREMENT.replace("requirement", "req_dc"),
         ),
         (r"(Name).*", REGEX_VAL_FIELD_DESCRIPTION),
-    ]
-
-
-class StatusCodeFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^(Status.Code.-).*$"
-    REGEX_GRID: ClassVar[List[Tuple]] = [
-        REGEX_GRID_VALUE,
-        REGEX_GRID_VALUE_DESCRIPTION,
-    ]
-
-
-class StatusValueFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^.*(Status.Value).*$"
-    REGEX_GRID: ClassVar[List[Tuple]] = [
-        REGEX_GRID_VALUE,
-        REGEX_GRID_VALUE_DESCRIPTION,
     ]
 
 
@@ -813,13 +795,7 @@ class EnrichedFigureDocument(Document):
         default_factory=list
     )
     command_cqe_dword: List[CommandCqeDwordFigure] = Field(default_factory=list)
-    command_specific_status_value: List[CommandSpecificStatusValueFigure] = Field(
-        default_factory=list
-    )
     general_command_status_value: List[GeneralCommandStatusValueFigure] = Field(
-        default_factory=list
-    )
-    generic_command_status_value: List[GenericCommandStatusValueFigure] = Field(
         default_factory=list
     )
     cns_value: List[CnsValueFigure] = Field(default_factory=list)
