@@ -591,6 +591,16 @@ class ResponseFigure(EnrichedFigure):
     name: str
 
 
+class AttributesEntryFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^(?P<name>.*)\s+Attributes Entry$"
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    name: str
+
+
 class EnrichedFigureDocument(Document):
     SUFFIX_JSON: ClassVar[str] = ".enriched.figure.document.json"
     SUFFIX_HTML: ClassVar[str] = ".enriched.figure.document.html"
@@ -679,6 +689,7 @@ class EnrichedFigureDocument(Document):
         default_factory=list
     )
     response: List[ResponseFigure] = Field(default_factory=list)
+    attributes_entry: List[AttributesEntryFigure] = Field(default_factory=list)
 
     nontabular: List[Figure] = Field(default_factory=list)
     uncategorized: List[Figure] = Field(default_factory=list)
