@@ -103,6 +103,60 @@
             "title": "AsynchronousEventInformationFigure",
             "type": "object"
         },
+        "AttributesEntryFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "name"
+            ],
+            "title": "AttributesEntryFigure",
+            "type": "object"
+        },
         "Cell": {
             "properties": {
                 "text": {
@@ -2545,6 +2599,13 @@
                 "$ref": "#/$defs/ResponseFigure"
             },
             "title": "Response",
+            "type": "array"
+        },
+        "attributes_entry": {
+            "items": {
+                "$ref": "#/$defs/AttributesEntryFigure"
+            },
+            "title": "Attributes Entry",
             "type": "array"
         },
         "nontabular": {
