@@ -282,6 +282,60 @@
             "title": "CommandCqeDwordFigure",
             "type": "object"
         },
+        "CommandDwordFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command_dword": {
+                    "title": "Command Dword",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command_dword"
+            ],
+            "title": "CommandDwordFigure",
+            "type": "object"
+        },
         "CommandIoOpcodeFigure": {
             "properties": {
                 "figure_nr": {
@@ -2180,6 +2234,13 @@
                 "$ref": "#/$defs/CommandSqeDwordFigure"
             },
             "title": "Command Sqe Dword",
+            "type": "array"
+        },
+        "command_dword": {
+            "items": {
+                "$ref": "#/$defs/CommandDwordFigure"
+            },
+            "title": "Command Dword",
             "type": "array"
         },
         "command_sqe_dword_lower_upper": {
