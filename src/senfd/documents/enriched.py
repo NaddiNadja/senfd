@@ -568,6 +568,19 @@ class RpmbFlowFigure(EnrichedFigure):
     flow: str
 
 
+class StateTransitionConditionFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<name>.*)\s+State Transition Conditions$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        (r"^(Starting)$", REGEX_ALL.replace("all", "starting")),
+        (r"^(Ending)$", REGEX_ALL.replace("all", "ending")),
+        (r"^(Transition Condition)$", REGEX_ALL.replace("all", "name")),
+    ]
+
+    name: str
+
+
 class EnrichedFigureDocument(Document):
     SUFFIX_JSON: ClassVar[str] = ".enriched.figure.document.json"
     SUFFIX_HTML: ClassVar[str] = ".enriched.figure.document.html"
@@ -652,6 +665,9 @@ class EnrichedFigureDocument(Document):
         default_factory=list
     )
     rpmb_flow: List[RpmbFlowFigure] = Field(default_factory=list)
+    state_transition_condition: List[StateTransitionConditionFigure] = Field(
+        default_factory=list
+    )
 
     nontabular: List[Figure] = Field(default_factory=list)
     uncategorized: List[Figure] = Field(default_factory=list)

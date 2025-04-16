@@ -1918,6 +1918,60 @@
             ],
             "type": "array"
         },
+        "StateTransitionConditionFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "name"
+            ],
+            "title": "StateTransitionConditionFigure",
+            "type": "object"
+        },
         "StatusCodeFigure": {
             "properties": {
                 "figure_nr": {
@@ -2423,6 +2477,13 @@
                 "$ref": "#/$defs/RpmbFlowFigure"
             },
             "title": "Rpmb Flow",
+            "type": "array"
+        },
+        "state_transition_condition": {
+            "items": {
+                "$ref": "#/$defs/StateTransitionConditionFigure"
+            },
+            "title": "State Transition Condition",
             "type": "array"
         },
         "nontabular": {
