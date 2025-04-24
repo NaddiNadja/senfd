@@ -316,6 +316,19 @@ class NvmeManagementDwordFigure(EnrichedFigure):
     command_dword: int
 
 
+class PcieRequestDwordFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<command_name>[\w()\/\-\s&]+?)\s?[-–—]?\s+PCIe Request Dword\s*(?P<command_dword>\d+)$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    command_name: str
+    command_dword: int
+
+
 class IdentifyCommandSqeDwordFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
         r"^Command\s*Dword\s*(?P<command_dword>\d+).-.CNS.Specific.Identifier$"
@@ -676,6 +689,7 @@ class EnrichedFigureDocument(Document):
     command_sqe_dword: List[CommandSqeDwordFigure] = Field(default_factory=list)
     command_dword: List[CommandDwordFigure] = Field(default_factory=list)
     nvme_management_dword: List[NvmeManagementDwordFigure] = Field(default_factory=list)
+    pcie_request_dword: List[PcieRequestDwordFigure] = Field(default_factory=list)
     command_sqe_dword_lower_upper: List[CommandSqeDwordLowerUpperFigure] = Field(
         default_factory=list
     )
