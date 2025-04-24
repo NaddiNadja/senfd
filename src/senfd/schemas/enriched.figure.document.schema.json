@@ -2004,6 +2004,65 @@
             "title": "ParameterFieldFigure",
             "type": "object"
         },
+        "PcieRequestDwordFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "command_name": {
+                    "title": "Command Name",
+                    "type": "string"
+                },
+                "command_dword": {
+                    "title": "Command Dword",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "command_name",
+                "command_dword"
+            ],
+            "title": "PcieRequestDwordFigure",
+            "type": "object"
+        },
         "PropertyDefinitionFigure": {
             "properties": {
                 "figure_nr": {
@@ -2626,6 +2685,13 @@
                 "$ref": "#/$defs/NvmeManagementDwordFigure"
             },
             "title": "Nvme Management Dword",
+            "type": "array"
+        },
+        "pcie_request_dword": {
+            "items": {
+                "$ref": "#/$defs/PcieRequestDwordFigure"
+            },
+            "title": "Pcie Request Dword",
             "type": "array"
         },
         "command_sqe_dword_lower_upper": {
