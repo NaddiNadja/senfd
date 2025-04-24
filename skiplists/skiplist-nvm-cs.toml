@@ -1,0 +1,4 @@
+[[skip]]
+regex = "^AWU(N|PF)/NAWU(N|PF) Example.*"
+matches = 3
+description = "Examples are not necessary for building a data model"
