@@ -71,7 +71,7 @@ REGEX_GRID_FEATURE_UMBFA = (
     REGEX_VAL_YESNO.replace("<yn>", "<membuf>"),
 )
 REGEX_GRID_REQUIREMENTS = (
-    r"^(((:?Command|Feature).+Support.+Requirements)|(:?O\/M)).*$",
+    r"^(((:?Command|Feature|Log Page|Controller)\s+Support\s+Requirements)|(:?O\/M)).*$",
     REGEX_VAL_REQUIREMENT,
 )
 REGEX_GRID_BITS_FUNCTION = (
@@ -249,16 +249,19 @@ class AsynchronousEventInformationFigure(EnrichedFigure):
     event: str
 
 
-class IoControllerCommandSetSupportRequirementFigure(EnrichedFigure):
+class IoControllerSupportRequirementFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
-        r".*-\s+(?P<command_set_name>.*)Command\s+Set\s+Support"
+        r"I\/O Controller -\s+(?P<supported>.*) Support"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
-        REGEX_GRID_COMMAND_NAME,
+        (
+            r"((Command|Log Page|Feature)( Name)?).*",
+            REGEX_VAL_NAME.replace("name", "command_name"),
+        ),
         REGEX_GRID_REQUIREMENTS,
     ]
 
-    command_set_name: str
+    supported: str
 
 
 class CommandSupportRequirementFigure(EnrichedFigure):
@@ -535,14 +538,6 @@ class HostSoftwareSpecifiedFieldFigure(EnrichedFigure):
     ]
 
 
-class FeatureSupportFigure(EnrichedFigure):
-    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^I.O.Controller.-.Feature.Support$"
-    REGEX_GRID: ClassVar[List[Tuple]] = [
-        REGEX_GRID_FEATURE_NAME,
-        REGEX_GRID_REQUIREMENTS,
-    ]
-
-
 class LogPageIdentifierFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*Log\s+Page\s+Identifiers.*"
     REGEX_GRID: ClassVar[List[Tuple]] = [
@@ -766,9 +761,9 @@ class EnrichedFigureDocument(Document):
         default_factory=list
     )
     example: List[ExampleFigure] = Field(default_factory=list)
-    io_controller_command_set_support_requirement: List[
-        IoControllerCommandSetSupportRequirementFigure
-    ] = Field(default_factory=list)
+    io_controller_support_requirement: List[IoControllerSupportRequirementFigure] = (
+        Field(default_factory=list)
+    )
     command_admin_opcode: List[CommandAdminOpcodeFigure] = Field(default_factory=list)
     command_io_opcode: List[CommandIoOpcodeFigure] = Field(default_factory=list)
     command_support_requirement: List[CommandSupportRequirementFigure] = Field(
@@ -799,7 +794,6 @@ class EnrichedFigureDocument(Document):
         default_factory=list
     )
     cns_value: List[CnsValueFigure] = Field(default_factory=list)
-    feature_support: List[FeatureSupportFigure] = Field(default_factory=list)
     feature_identifier: List[FeatureIdentifierFigure] = Field(default_factory=list)
     log_page_identifier: List[LogPageIdentifierFigure] = Field(default_factory=list)
     offset: List[OffsetFigure] = Field(default_factory=list)

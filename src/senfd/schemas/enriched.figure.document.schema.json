@@ -1266,55 +1266,6 @@
             "title": "FeatureIdentifierFigure",
             "type": "object"
         },
-        "FeatureSupportFigure": {
-            "properties": {
-                "figure_nr": {
-                    "title": "Figure Nr",
-                    "type": "integer"
-                },
-                "caption": {
-                    "title": "Caption",
-                    "type": "string"
-                },
-                "description": {
-                    "title": "Description",
-                    "type": "string"
-                },
-                "page_nr": {
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Page Nr"
-                },
-                "table": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Table"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "grid": {
-                    "$ref": "#/$defs/Grid"
-                }
-            },
-            "required": [
-                "figure_nr",
-                "caption",
-                "description"
-            ],
-            "title": "FeatureSupportFigure",
-            "type": "object"
-        },
         "Figure": {
             "description": "A figure as captioned in a table-of-figures in the Specification Documents.\n\nThis is a minimally enriched figure representation. The intent is that via regular\nexpressions, it should be possible to construct instances when feeding it with\nthe text from a table of figures or a table that conventionally contains a figure\ncaption in the first row.\n\nThe page number is only retrievable from table of figure captions and thus optional.\nThe table data is similarly represented in a form with minimal enrichment.",
             "properties": {
@@ -1609,7 +1560,7 @@
             "title": "IdentifyCommandSqeDwordFigure",
             "type": "object"
         },
-        "IoControllerCommandSetSupportRequirementFigure": {
+        "IoControllerSupportRequirementFigure": {
             "properties": {
                 "figure_nr": {
                     "title": "Figure Nr",
@@ -1649,8 +1600,8 @@
                 "grid": {
                     "$ref": "#/$defs/Grid"
                 },
-                "command_set_name": {
-                    "title": "Command Set Name",
+                "supported": {
+                    "title": "Supported",
                     "type": "string"
                 }
             },
@@ -1658,9 +1609,9 @@
                 "figure_nr",
                 "caption",
                 "description",
-                "command_set_name"
+                "supported"
             ],
-            "title": "IoControllerCommandSetSupportRequirementFigure",
+            "title": "IoControllerSupportRequirementFigure",
             "type": "object"
         },
         "LogPageFigure": {
@@ -2973,11 +2924,11 @@
             "title": "Example",
             "type": "array"
         },
-        "io_controller_command_set_support_requirement": {
+        "io_controller_support_requirement": {
             "items": {
-                "$ref": "#/$defs/IoControllerCommandSetSupportRequirementFigure"
+                "$ref": "#/$defs/IoControllerSupportRequirementFigure"
             },
-            "title": "Io Controller Command Set Support Requirement",
+            "title": "Io Controller Support Requirement",
             "type": "array"
         },
         "command_admin_opcode": {
@@ -3090,13 +3041,6 @@
                 "$ref": "#/$defs/CnsValueFigure"
             },
             "title": "Cns Value",
-            "type": "array"
-        },
-        "feature_support": {
-            "items": {
-                "$ref": "#/$defs/FeatureSupportFigure"
-            },
-            "title": "Feature Support",
             "type": "array"
         },
         "feature_identifier": {
