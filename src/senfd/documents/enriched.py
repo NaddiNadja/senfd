@@ -544,9 +544,7 @@ class LogPageIdentifierFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r".*Log\s+Page\s+Identifiers.*"
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_LPI,
-        REGEX_GRID_SCOPE,
         REGEX_GRID_LPN,
-        REGEX_GRID_REFERENCE,
     ]
 
 
