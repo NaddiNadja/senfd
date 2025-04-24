@@ -1,0 +1,14 @@
+[[skip]]
+regex = "^Decimal and Binary Units$"
+matches = 1
+description = "Not relevant"
+
+[[skip]]
+regex = "^Byte, Word, and Dword Relationships$"
+matches = 1
+description = "Not relevant"
+
+[[skip]]
+regex = "^MIC Example .*"
+matches = 4
+description = "Examples are not necessary for building a data model"
