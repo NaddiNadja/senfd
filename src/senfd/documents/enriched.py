@@ -611,6 +611,19 @@ class AdditionalHardwareErrorInfoFigure(EnrichedFigure):
     ]
 
 
+class MessageFieldsFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
+        r"^(?P<name>.*) (?P<type>Message|Response|Primitive|Request) (Fields|Description)( \(\w+\))?$"
+    )
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        REGEX_GRID_FIELD_DESCRIPTION,
+    ]
+
+    name: str
+    type: str
+
+
 class EnrichedFigureDocument(Document):
     SUFFIX_JSON: ClassVar[str] = ".enriched.figure.document.json"
     SUFFIX_HTML: ClassVar[str] = ".enriched.figure.document.html"
@@ -703,6 +716,7 @@ class EnrichedFigureDocument(Document):
     additional_hardware_error_info: List[AdditionalHardwareErrorInfoFigure] = Field(
         default_factory=list
     )
+    message_fields: List[MessageFieldsFigure] = Field(default_factory=list)
 
     nontabular: List[Figure] = Field(default_factory=list)
     uncategorized: List[Figure] = Field(default_factory=list)
