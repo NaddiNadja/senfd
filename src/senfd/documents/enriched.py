@@ -637,7 +637,6 @@ class RequirementsFigure(EnrichedFigure):
         REGEX_GRID_IO,
         REGEX_GRID_ADMIN,
         REGEX_GRID_DISCOVERY,
-        REGEX_GRID_REFERENCE,
     ]
 
 
