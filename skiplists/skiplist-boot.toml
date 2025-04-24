@@ -1,0 +1,19 @@
+[[skip]]
+regex = "^Decimal and Binary Units$"
+matches = 1
+description = "Not relevant"
+
+[[skip]]
+regex = "^Byte, Word, and Dword Relationships$"
+matches = 1
+description = "Not relevant"
+
+[[skip]]
+regex = "^IPv4 in IPv6 Format$"
+matches = 1
+description = "Not relevant"
+
+[[skip]]
+regex = "^Example .*"
+matches = 5
+description = "Examples are not necessary for building a data model"
