@@ -353,7 +353,9 @@ class CommandSqeDwordLowerUpperFigure(EnrichedFigure):
 class CommandSqeDwordFigure(EnrichedFigure):
     REGEX_FIGURE_DESCRIPTION: ClassVar[str] = (
         r"^(?P<command_name>[\w()\/\-\s&]+?)\s?[-–—]\s+"
-        r"Command\s*Dword\s*(?P<command_dword>\d+)$"
+        r"Command\s*Dword\s*(?P<command_dword>\d+)"
+        r"( if (?P<condition>.*?))?"
+        r"$"
     )
     REGEX_GRID: ClassVar[List[Tuple]] = [
         REGEX_GRID_RANGE,
@@ -362,6 +364,7 @@ class CommandSqeDwordFigure(EnrichedFigure):
 
     command_name: str
     command_dword: int
+    condition: None | str
 
 
 class CommandDwordFigure(EnrichedFigure):

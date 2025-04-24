@@ -702,6 +702,17 @@
                 "command_dword": {
                     "title": "Command Dword",
                     "type": "integer"
+                },
+                "condition": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Condition"
                 }
             },
             "required": [
@@ -709,7 +720,8 @@
                 "caption",
                 "description",
                 "command_name",
-                "command_dword"
+                "command_dword",
+                "condition"
             ],
             "title": "CommandSqeDwordFigure",
             "type": "object"
