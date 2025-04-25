@@ -2014,6 +2014,60 @@
             "title": "PcieRequestDwordFigure",
             "type": "object"
         },
+        "PduFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                },
+                "acronym": {
+                    "title": "Acronym",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description",
+                "acronym"
+            ],
+            "title": "PduFigure",
+            "type": "object"
+        },
         "PropertyDefinitionFigure": {
             "properties": {
                 "figure_nr": {
@@ -2860,6 +2914,13 @@
                 "$ref": "#/$defs/MessageFieldsFigure"
             },
             "title": "Message Fields",
+            "type": "array"
+        },
+        "pdu": {
+            "items": {
+                "$ref": "#/$defs/PduFigure"
+            },
+            "title": "Pdu",
             "type": "array"
         },
         "nontabular": {
