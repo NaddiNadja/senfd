@@ -124,7 +124,7 @@ class SkipPatterns:
         for skip, count in counts.items():
             if skip.matches != count:
                 raise MultipleClassifierMatchException(
-                    f"The number of matches for skip element {skip} was not as expected: {skip.matches != count}"
+                    f"The number of matches for skip element {skip} was not as expected: {skip.matches} != {count}"
                 )
 
     def skip_figure(self, figure: Figure) -> SkipElement | None:
