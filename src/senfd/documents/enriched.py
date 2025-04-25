@@ -660,6 +660,17 @@ class MappingTableFigure(EnrichedFigure):
     ]
 
 
+class PduFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^.*PDU.*\((?P<acronym>.*)\)$"
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        REGEX_GRID_RANGE,
+        (r"(PDU Section).*", REGEX_ALL.replace("all", "section")),
+        REGEX_GRID_VALUE_DESCRIPTION,
+    ]
+
+    acronym: str
+
+
 class EnrichedFigureDocument(Document):
     SUFFIX_JSON: ClassVar[str] = ".enriched.figure.document.json"
     SUFFIX_HTML: ClassVar[str] = ".enriched.figure.document.html"
@@ -756,6 +767,7 @@ class EnrichedFigureDocument(Document):
     )
     message_fields: List[MessageFieldsFigure] = Field(default_factory=list)
     mapping_table: List[MappingTableFigure] = Field(default_factory=list)
+    pdu: List[PduFigure] = Field(default_factory=list)
 
     nontabular: List[Figure] = Field(default_factory=list)
     uncategorized: List[Figure] = Field(default_factory=list)
