@@ -32,13 +32,13 @@ REGEX_VAL_VALUE_DESCRIPTION = r"(?P<name>[ \w]+)" r"(:\s*(?P<description>.*))?"
 REGEX_VAL_REQUIREMENT = r"^(?:(?P<requirement>O|M|P|NR|Note)(?:[ \d]*))?$"
 REGEX_VAL_REFERENCE = r"^(?P<reference>\d+\.\d+(?:\.\d+)?(?:\.\d+)?(?:\.\d+)?)$"
 REGEX_VAL_YESNO = r"(?P<yn>NOTE|Note|Yes|No|Y|N)[ \d]*?"
+REGEX_VAL_RANGE = (
+    r"(?!Note|specficiation)(?:(?P<upper>[0-9 \w\+\*]+):)?(?P<lower>[0-9 \w\+\*]+)"
+)
 
 REGEX_HDR_EXPLANATION = r"(Definition|Description).*"
 
-REGEX_GRID_RANGE = (
-    r"(Bits|Bytes).*",
-    r"(?!Note|specficiation)(?:(?P<upper>[0-9 \w\+\*]+):)?(?P<lower>[0-9 \w\+\*]+)",
-)
+REGEX_GRID_RANGE = (r"(Bits|Bytes).*", REGEX_VAL_RANGE)
 REGEX_GRID_ACRONYM = (r"(Term|Acronym).*", REGEX_ALL.replace("all", "term"))
 REGEX_GRID_SCOPE = (
     r"(Scope|Scope.and.Support).*",
@@ -661,6 +661,24 @@ class PduFigure(EnrichedFigure):
     acronym: str
 
 
+class MappingTableFigure(EnrichedFigure):
+    REGEX_FIGURE_DESCRIPTION: ClassVar[str] = r"^.* Mapping Table$"
+    REGEX_GRID: ClassVar[List[Tuple]] = [
+        (
+            r"(?P<from>Bytes).*",
+            REGEX_VAL_RANGE.replace("upper", "upper_from").replace(
+                "lower", "lower_from"
+            ),
+        ),
+        (r"(?P<desc_from>Description).*", REGEX_ALL.replace("all", "description_from")),
+        (
+            r"(?P<to>Bytes).*",
+            REGEX_VAL_RANGE,
+        ),
+        (r"(?P<desc_to>Description).*", REGEX_VAL_FIELD_DESCRIPTION),
+    ]
+
+
 class EnrichedFigureDocument(Document):
     SUFFIX_JSON: ClassVar[str] = ".enriched.figure.document.json"
     SUFFIX_HTML: ClassVar[str] = ".enriched.figure.document.html"
@@ -757,6 +775,7 @@ class EnrichedFigureDocument(Document):
     )
     message_fields: List[MessageFieldsFigure] = Field(default_factory=list)
     pdu: List[PduFigure] = Field(default_factory=list)
+    mapping_table: List[MappingTableFigure] = Field(default_factory=list)
 
     nontabular: List[Figure] = Field(default_factory=list)
     uncategorized: List[Figure] = Field(default_factory=list)

@@ -1739,6 +1739,55 @@
             "title": "LogSpecificIdentifierFigure",
             "type": "object"
         },
+        "MappingTableFigure": {
+            "properties": {
+                "figure_nr": {
+                    "title": "Figure Nr",
+                    "type": "integer"
+                },
+                "caption": {
+                    "title": "Caption",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "page_nr": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Page Nr"
+                },
+                "table": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Table"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grid": {
+                    "$ref": "#/$defs/Grid"
+                }
+            },
+            "required": [
+                "figure_nr",
+                "caption",
+                "description"
+            ],
+            "title": "MappingTableFigure",
+            "type": "object"
+        },
         "MessageFieldsFigure": {
             "properties": {
                 "figure_nr": {
@@ -2921,6 +2970,13 @@
                 "$ref": "#/$defs/PduFigure"
             },
             "title": "Pdu",
+            "type": "array"
+        },
+        "mapping_table": {
+            "items": {
+                "$ref": "#/$defs/MappingTableFigure"
+            },
+            "title": "Mapping Table",
             "type": "array"
         },
         "nontabular": {
